@@ -2,7 +2,7 @@ import React from "react";
 import WorkingHours from "../_sections/WorkingHours";
 import SectionLayout from "../Section";
 import { MdPlace } from "react-icons/md";
-import Delivery from "../_sections/Delivery";
+// import Delivery from "../_sections/Delivery";
 const zonesDeLivraisonPage = () => {
   const openingHours = [
     { day: "Lundi", hours: "11h30 - 14h30 • 18h30 - 22h30", isToday: false },
@@ -23,7 +23,7 @@ const zonesDeLivraisonPage = () => {
   ];
   return (
     <div>
-      <Delivery />
+      {/* <Delivery /> */}
       <SectionLayout title={"Zones de livraison"}>
         <ul className="flex flex-col gap-2">
           <li className="flex items-center space-x-3 font-medium">
