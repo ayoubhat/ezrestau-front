@@ -1,7 +1,7 @@
 "use server";
 
+import { MenuCategory, MenuItem } from "@/types";
 import { uploadToCloudinary } from "./upload-to-cloudinary";
-import { MenuCategory, MenuItem } from "./get-restaurant-by-id";
 import { auth } from "@clerk/nextjs/server";
 
 export async function addCategoryToRestaurant(categoryName: string) {
