@@ -253,7 +253,9 @@ const DeliveryServicesForm = () => {
     if (isOpen) {
       form.setValue(`delivery_hours.${day}`, ["11:30-22:30"]);
     } else {
-      const { [day]: _, ...rest } = currentHours;
+      const rest = Object.fromEntries(
+        Object.entries(currentHours).filter(([k]) => k !== day)
+      );
       form.setValue("delivery_hours", rest);
     }
   };
@@ -266,6 +268,7 @@ const DeliveryServicesForm = () => {
     const newSlots = [...currentSlots, "09:00-17:00"];
     form.setValue(`delivery_hours.${day}`, newSlots);
   };
+
   const removeTimeSlot = (day: string, index: number) => {
     const currentHours = form.getValues("delivery_hours") || {};
     const currentSlots = Array.isArray(currentHours[day])
@@ -274,7 +277,9 @@ const DeliveryServicesForm = () => {
     const newSlots = currentSlots.filter((_, i) => i !== index);
 
     if (newSlots.length === 0) {
-      const { [day]: _, ...rest } = currentHours;
+      const rest = Object.fromEntries(
+        Object.entries(currentHours).filter(([k]) => k !== day)
+      );
       form.setValue("delivery_hours", rest);
     } else {
       form.setValue(`delivery_hours.${day}`, newSlots);
