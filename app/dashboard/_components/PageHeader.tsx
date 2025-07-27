@@ -4,8 +4,8 @@ const PageHeader = ({
   title,
   description,
 }: {
-  title: String;
-  description: String;
+  title: string;
+  description: string;
 }) => {
   return (
     <div>

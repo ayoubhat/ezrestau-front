@@ -5,6 +5,7 @@ import { SiUbereats, SiDeliveroo } from "react-icons/si";
 import React, { useState } from "react";
 import Link from "next/link";
 import { Restaurant } from "@/types";
+import Image from "next/image";
 
 const Navbar = ({ restaurant }: { restaurant: Restaurant }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -77,7 +78,7 @@ const Navbar = ({ restaurant }: { restaurant: Restaurant }) => {
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
             {restaurant?.logo_url ? (
-              <img
+              <Image
                 src={restaurant.logo_url}
                 alt={restaurantName}
                 className="h-10 w-auto object-contain"

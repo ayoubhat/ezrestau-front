@@ -1,15 +1,13 @@
-import React, { Children } from "react";
-
 const SectionLayout = ({
   title,
   description,
   children,
   bgColor,
 }: {
-  title: String;
-  description?: String;
+  title: string;
+  description?: string;
   children: React.ReactNode;
-  bgColor?: String;
+  bgColor?: string;
 }) => {
   return (
     <section

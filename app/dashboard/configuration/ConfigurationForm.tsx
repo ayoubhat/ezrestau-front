@@ -21,6 +21,7 @@ import { slugify } from "@/lib/utils";
 import { toast } from "sonner";
 import { getRestaurantByUserId } from "@/actions/get-restaurant-by-user-id";
 import { updateRestaurantByUserId } from "@/actions/update-restaurant-by-user-id";
+import Image from "next/image";
 
 const formSchema = z.object({
   name: z.string().min(1, "Le nom du restaurant est requis"),
@@ -171,7 +172,7 @@ const ConfigurationForm = () => {
                 <div>
                   {logoPreview || restaurant?.logo_url ? (
                     <div className="relative inline-block">
-                      <img
+                      <Image
                         src={logoPreview ?? restaurant?.logo_url ?? undefined}
                         alt="Logo preview"
                         className="w-32 h-32 object-cover rounded-lg border cursor-pointer hover:opacity-80 transition-opacity"

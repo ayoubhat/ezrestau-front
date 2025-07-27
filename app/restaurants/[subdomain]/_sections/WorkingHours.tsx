@@ -1,11 +1,16 @@
 import SectionLayout from "../Section";
 
+type Schedule = {
+  day: string;
+  hours: string;
+};
+
 const WorkingHours = ({
   openingHours,
   title,
 }: {
-  openingHours: Array<unknown>;
-  title: String;
+  openingHours: Schedule[];
+  title: string;
 }) => {
   const today = new Date().getDay();
   const dayNames = [

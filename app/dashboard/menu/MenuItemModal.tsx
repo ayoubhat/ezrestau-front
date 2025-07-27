@@ -34,6 +34,7 @@ import { Plus, Upload, X } from "lucide-react";
 import { toast } from "sonner";
 import { addItemToCategory } from "@/actions/update-restaurant-menu";
 import { MenuCategory } from "@/types";
+import Image from "next/image";
 
 const formSchema = z.object({
   name: z.string().min(1, "Le nom du plat est requis"),
@@ -211,7 +212,7 @@ const MenuItemModal = ({ categories }: MenuItemModalProps) => {
                     <div>
                       {imagePreview ? (
                         <div className="relative inline-block">
-                          <img
+                          <Image
                             src={imagePreview}
                             alt="Image preview"
                             className="w-32 h-32 object-cover rounded-lg border"

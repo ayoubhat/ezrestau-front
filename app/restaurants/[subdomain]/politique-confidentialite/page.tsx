@@ -1,5 +1,3 @@
-import React from "react";
-
 const page = () => {
   return (
     <div className="min-h-screen bg-background py-4 md:py-12">
@@ -202,7 +200,9 @@ const page = () => {
               </p>
               <ul className="list-disc list-inside space-y-2 text-muted-foreground ml-4">
                 <li>
-                  <strong className="text-foreground">Droit d&apos;accès :</strong>{" "}
+                  <strong className="text-foreground">
+                    Droit d&apos;accès :
+                  </strong>{" "}
                   obtenir une copie de vos données
                 </li>
                 <li>
@@ -260,11 +260,11 @@ const page = () => {
               <p className="text-muted-foreground leading-relaxed">
                 Nous mettons en œuvre des mesures de sécurité techniques et
                 organisationnelles appropriées pour protéger vos données
-                personnelles contre la destruction, la perte, l&apos;altération, la
-                divulgation ou l&apos;accès non autorisés. Ces mesures incluent le
-                chiffrement des données, l&apos;accès restreint aux données, la
-                formation du personnel et la surveillance régulière de nos
-                systèmes.
+                personnelles contre la destruction, la perte, l&apos;altération,
+                la divulgation ou l&apos;accès non autorisés. Ces mesures
+                incluent le chiffrement des données, l&apos;accès restreint aux
+                données, la formation du personnel et la surveillance régulière
+                de nos systèmes.
               </p>
             </div>
           </section>
@@ -315,8 +315,9 @@ const page = () => {
               <p className="text-muted-foreground leading-relaxed">
                 Vos données personnelles sont principalement traitées au sein de
                 l&apos;Union européenne. Si un transfert vers un pays tiers est
-                nécessaire, nous nous assurerons qu&apos;il bénéficie d&apos;un niveau de
-                protection adéquat conformément à la réglementation européenne.
+                nécessaire, nous nous assurerons qu&apos;il bénéficie d&apos;un
+                niveau de protection adéquat conformément à la réglementation
+                européenne.
               </p>
             </div>
           </section>
@@ -363,8 +364,8 @@ const page = () => {
               </div>
               <p className="text-muted-foreground leading-relaxed mt-4">
                 Vous avez également le droit de déposer une réclamation auprès
-                de la Commission Nationale de l&apos;Informatique et des Libertés
-                (CNIL) si vous estimez que le traitement de vos données
+                de la Commission Nationale de l&apos;Informatique et des
+                Libertés (CNIL) si vous estimez que le traitement de vos données
                 personnelles constitue une violation de la réglementation
                 applicable.
               </p>

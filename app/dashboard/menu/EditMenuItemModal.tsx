@@ -33,6 +33,7 @@ import { Upload, X } from "lucide-react";
 import { toast } from "sonner";
 import { updateMenuItem } from "@/actions/update-restaurant-menu";
 import { MenuCategory, MenuItem } from "@/types";
+import Image from "next/image";
 
 const formSchema = z.object({
   name: z.string().min(1, "Le nom du plat est requis"),
@@ -220,7 +221,7 @@ const EditMenuItemModal = ({
                     <div>
                       {imagePreview ? (
                         <div className="relative inline-block">
-                          <img
+                          <Image
                             src={imagePreview}
                             alt="Image preview"
                             className="w-32 h-32 object-cover rounded-lg border"

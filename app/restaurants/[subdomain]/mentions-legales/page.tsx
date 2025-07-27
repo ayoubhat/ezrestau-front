@@ -1,7 +1,3 @@
-import React from "react";
-import { ArrowLeft } from "lucide-react";
-import Link from "next/link";
-
 const MentionsLegalesPage = () => {
   return (
     <div className="min-h-screen bg-background py-4 md:py-12">

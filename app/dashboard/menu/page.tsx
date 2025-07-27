@@ -168,7 +168,7 @@ const MenuManagement = () => {
                             {/* Item image */}
                             <div className="w-16 h-16 flex-shrink-0">
                               {item.image_url ? (
-                                <img
+                                <Image
                                   src={item.image_url}
                                   alt={item.name}
                                   className="w-full h-full object-cover rounded-lg"

@@ -125,8 +125,8 @@ const RestaurantWebsite = () => {
       saturday: "Samedi",
     };
 
-    return Object.entries(openingHours as Record<string, any>).map(
-      ([day, hours]: [string, any]) => {
+    return Object.entries(openingHours as Record<string, unknown>).map(
+      ([day, hours]: [string, unknown]) => {
         const dayName = dayMapping[day];
         let hoursText = "Fermé";
 
