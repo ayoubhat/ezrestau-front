@@ -42,7 +42,11 @@ export async function uploadToCloudinary(formData: FormData): Promise<string> {
         .end(buffer);
     });
 
-    return (result as unknown).secure_url;
+    // Type guard and cast
+    if (result && typeof result === "object" && "secure_url" in result) {
+      return (result as { secure_url: string }).secure_url;
+    }
+    throw new Error("Cloudinary result missing secure_url");
   } catch (error) {
     console.error("Cloudinary upload error:", error);
     throw new Error("Failed to upload image");
