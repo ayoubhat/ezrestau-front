@@ -20,7 +20,6 @@ import { getCharacterCountColor } from "@/lib/utils";
 import { toast } from "sonner";
 import { getRestaurantByUserId } from "@/actions/get-restaurant-by-user-id";
 import { updateRestaurantByUserId } from "@/actions/update-restaurant-by-user-id";
-import TipCard from "@/components/TipCard";
 
 const seoFormSchema = z.object({
   seo_title: z.string().optional(),

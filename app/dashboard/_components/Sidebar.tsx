@@ -1,27 +1,21 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   CreditCard,
   HelpCircle,
   Clock,
-  Truck,
-  Star,
   MapPin,
   Settings,
   FileText,
-  User,
   Hamburger,
   HandPlatter,
   Phone,
   LayoutDashboard,
 } from "lucide-react";
-import Logout from "@/app/dashboard/_components/Logout";
 import { MdDeliveryDining } from "react-icons/md";
-import { TbSeo } from "react-icons/tb";
-import { FaSearch } from "react-icons/fa";
 import { IoSearchSharp } from "react-icons/io5";
 
 const restaurantNavItems = [
@@ -88,18 +82,18 @@ const restaurantNavItems = [
   },
 ];
 
-const accountNavItems = [
-  {
-    name: "Abonnement et facturation",
-    url: "/dashboard/subscription",
-    icon: CreditCard,
-  },
-  {
-    name: "Support",
-    url: "/dashboard/support",
-    icon: HelpCircle,
-  },
-];
+// const accountNavItems = [
+//   {
+//     name: "Abonnement et facturation",
+//     url: "/dashboard/subscription",
+//     icon: CreditCard,
+//   },
+//   {
+//     name: "Support",
+//     url: "/dashboard/support",
+//     icon: HelpCircle,
+//   },
+// ];
 
 const Sidebar = () => {
   const pathname = usePathname();

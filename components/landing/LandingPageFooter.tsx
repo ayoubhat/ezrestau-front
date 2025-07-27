@@ -1,7 +1,3 @@
-import { ChefHat } from "lucide-react";
-import Link from "next/link";
-import React from "react";
-
 const LandingPageFooter = () => {
   return (
     <footer className="bg-gray-900 text-white py-8">

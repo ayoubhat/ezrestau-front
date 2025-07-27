@@ -14,8 +14,6 @@ import {
 } from "@/components/ui/form";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
-import { getRestaurantById } from "@/actions/get-restaurant-by-id";
-import { updateRestaurant } from "@/actions/update-restaurant";
 import {
   FaCheck,
   FaMoneyBillWave,

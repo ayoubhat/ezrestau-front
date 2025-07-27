@@ -14,10 +14,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
-import { Clock, Plus, Trash2 } from "lucide-react";
+import { Plus, Trash2 } from "lucide-react";
 import { toast } from "sonner";
-import { getRestaurantById } from "@/actions/get-restaurant-by-id";
-import { updateRestaurant } from "@/actions/update-restaurant";
 import { useUser } from "@clerk/nextjs";
 import { getRestaurantByUserId } from "@/actions/get-restaurant-by-user-id";
 import { updateRestaurantByUserId } from "@/actions/update-restaurant-by-user-id";
@@ -42,8 +40,6 @@ const formSchema = z.object({
 });
 
 type FormData = z.infer<typeof formSchema>;
-
-const restaurantId = "6883a5ec0907dab53fafa74f";
 
 const DAYS = [
   { key: "monday", label: "Lundi" },

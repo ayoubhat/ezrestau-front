@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { toast } from "sonner";
 import { deleteMenuItem } from "@/actions/update-restaurant-menu";
-import { MenuItem } from "@/actions/get-restaurant-by-id";
+import { MenuItem } from "@/types";
 
 interface DeleteMenuItemDialogProps {
   item: MenuItem;

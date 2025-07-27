@@ -57,7 +57,6 @@ const RestaurantWebsite = () => {
   const {
     data: restaurant,
     isLoading,
-    error,
     isError,
     refetch,
   } = useQuery({

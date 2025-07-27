@@ -1,13 +1,12 @@
 "use client";
 
-import { Bell, ChefHat, CirclePercent, Eye, User } from "lucide-react";
+import { ChefHat, Eye } from "lucide-react";
 import React from "react";
 import { Button } from "../../../components/ui/button";
 import Link from "next/link";
 import { SignedIn, UserButton, useUser } from "@clerk/nextjs";
 import { useQuery } from "@tanstack/react-query";
 import { getRestaurantByUserId } from "@/actions/get-restaurant-by-user-id";
-import { TbPointFilled } from "react-icons/tb";
 import {
   Tooltip,
   TooltipTrigger,
@@ -15,8 +14,8 @@ import {
 } from "../../../components/ui/tooltip";
 
 const Header = () => {
-  const { user, isLoaded } = useUser();
-  const { data: restaurant, isLoading } = useQuery({
+  const { user } = useUser();
+  const { data: restaurant } = useQuery({
     queryKey: ["restaurant", "user", user?.id],
     queryFn: () => getRestaurantByUserId(user!.id),
     enabled: !!user?.id,

@@ -15,8 +15,6 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
-import { getRestaurantById } from "@/actions/get-restaurant-by-id";
-import { updateRestaurant } from "@/actions/update-restaurant";
 import { useUser } from "@clerk/nextjs";
 import { getRestaurantByUserId } from "@/actions/get-restaurant-by-user-id";
 import { updateRestaurantByUserId } from "@/actions/update-restaurant-by-user-id";

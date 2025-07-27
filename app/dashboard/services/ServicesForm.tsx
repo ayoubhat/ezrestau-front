@@ -10,14 +10,10 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
-import { getRestaurantById } from "@/actions/get-restaurant-by-id";
-import { updateRestaurant } from "@/actions/update-restaurant";
 import {
   FaWheelchair,
   FaDog,
@@ -80,8 +76,6 @@ const services: Service[] = [
   { label: "Terrasse extérieure" },
   { label: "Climatisation" },
 ];
-
-const restaurantId = "6883a5ec0907dab53fafa74f";
 
 const ServicesForm = () => {
   const { user, isLoaded } = useUser();
