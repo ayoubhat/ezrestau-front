@@ -126,7 +126,7 @@ const ContactForm = () => {
         data.social_links &&
         Object.values(data.social_links).some((value) => value)
           ? Object.fromEntries(
-              Object.entries(data.social_links).filter(([key, value]) => value)
+              Object.entries(data.social_links).filter(([value]) => value)
             )
           : undefined,
     };
