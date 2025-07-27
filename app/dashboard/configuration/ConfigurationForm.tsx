@@ -190,7 +190,7 @@ const ConfigurationForm = () => {
                           Cliquez pour télécharger un logo
                         </span>
                         <p className="text-xs text-gray-500 mt-1">
-                          PNG, JPG, GIF jusqu'à 10MB
+                          PNG, JPG, GIF jusqu&apos;à 10MB
                         </p>
                       </div>
                     </div>

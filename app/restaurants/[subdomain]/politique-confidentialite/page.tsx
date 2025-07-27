@@ -23,8 +23,8 @@ const page = () => {
             <div className="space-y-3">
               <p className="text-muted-foreground leading-relaxed">
                 La présente Politique de confidentialité décrit la façon dont
-                Restaurant Saveurs d'Italie collecte, utilise et protège les
-                informations que vous nous fournissez lorsque vous utilisez
+                Restaurant Saveurs d&apos;Italie collecte, utilise et protège
+                les informations que vous nous fournissez lorsque vous utilisez
                 notre site web.
               </p>
               <p className="text-muted-foreground leading-relaxed">
@@ -32,7 +32,7 @@ const page = () => {
                 personnelles. Nous vous demandons de fournir certaines
                 informations personnelles par lesquelles vous pouvez être
                 identifié lorsque vous utilisez ce site web. Soyez assuré
-                qu'elles ne seront utilisées que conformément à cette
+                qu&apos;elles ne seront utilisées que conformément à cette
                 déclaration de confidentialité.
               </p>
             </div>
@@ -81,7 +81,7 @@ const page = () => {
                   consentement)
                 </li>
                 <li>Respecter nos obligations légales</li>
-                <li>Analyser l'utilisation de notre site web</li>
+                <li>Analyser l&apos;utilisation de notre site web</li>
               </ul>
             </div>
           </section>
@@ -130,7 +130,7 @@ const page = () => {
             </h2>
             <div className="space-y-3">
               <p className="text-muted-foreground leading-relaxed">
-                Nous ne vendons, n'échangeons ni ne louons vos informations
+                Nous ne vendons, n&apos;échangeons ni ne louons vos informations
                 personnelles à des tiers. Nous pouvons partager vos informations
                 dans les cas suivants :
               </p>
@@ -173,7 +173,7 @@ const page = () => {
                   <strong className="text-foreground">
                     Données de compte :
                   </strong>{" "}
-                  jusqu'à suppression du compte
+                  jusqu&apos;à suppression du compte
                 </li>
                 <li>
                   <strong className="text-foreground">
@@ -202,7 +202,7 @@ const page = () => {
               </p>
               <ul className="list-disc list-inside space-y-2 text-muted-foreground ml-4">
                 <li>
-                  <strong className="text-foreground">Droit d'accès :</strong>{" "}
+                  <strong className="text-foreground">Droit d&apos;accès :</strong>{" "}
                   obtenir une copie de vos données
                 </li>
                 <li>
@@ -213,7 +213,7 @@ const page = () => {
                 </li>
                 <li>
                   <strong className="text-foreground">
-                    Droit à l'effacement :
+                    Droit à l&apos;effacement :
                   </strong>{" "}
                   supprimer vos données
                 </li>
@@ -231,7 +231,7 @@ const page = () => {
                 </li>
                 <li>
                   <strong className="text-foreground">
-                    Droit d'opposition :
+                    Droit d&apos;opposition :
                   </strong>{" "}
                   vous opposer au traitement
                 </li>
@@ -260,9 +260,9 @@ const page = () => {
               <p className="text-muted-foreground leading-relaxed">
                 Nous mettons en œuvre des mesures de sécurité techniques et
                 organisationnelles appropriées pour protéger vos données
-                personnelles contre la destruction, la perte, l'altération, la
-                divulgation ou l'accès non autorisés. Ces mesures incluent le
-                chiffrement des données, l'accès restreint aux données, la
+                personnelles contre la destruction, la perte, l&apos;altération, la
+                divulgation ou l&apos;accès non autorisés. Ces mesures incluent le
+                chiffrement des données, l&apos;accès restreint aux données, la
                 formation du personnel et la surveillance régulière de nos
                 systèmes.
               </p>
@@ -290,7 +290,7 @@ const page = () => {
                   <strong className="text-foreground">
                     Cookies de performance :
                   </strong>{" "}
-                  pour analyser l'utilisation du site
+                  pour analyser l&apos;utilisation du site
                 </li>
                 <li>
                   <strong className="text-foreground">
@@ -314,8 +314,8 @@ const page = () => {
             <div>
               <p className="text-muted-foreground leading-relaxed">
                 Vos données personnelles sont principalement traitées au sein de
-                l'Union européenne. Si un transfert vers un pays tiers est
-                nécessaire, nous nous assurerons qu'il bénéficie d'un niveau de
+                l&apos;Union européenne. Si un transfert vers un pays tiers est
+                nécessaire, nous nous assurerons qu&apos;il bénéficie d&apos;un niveau de
                 protection adéquat conformément à la réglementation européenne.
               </p>
             </div>
@@ -363,7 +363,7 @@ const page = () => {
               </div>
               <p className="text-muted-foreground leading-relaxed mt-4">
                 Vous avez également le droit de déposer une réclamation auprès
-                de la Commission Nationale de l'Informatique et des Libertés
+                de la Commission Nationale de l&apos;Informatique et des Libertés
                 (CNIL) si vous estimez que le traitement de vos données
                 personnelles constitue une violation de la réglementation
                 applicable.

@@ -1,12 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { Search, ChevronDown, ChevronUp, Edit, Trash2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { MenuCategory, MenuItem } from "@/actions/get-restaurant-by-id";
 import CategoryModal from "./CategoryModal";
 import MenuItemModal from "./MenuItemModal";
 import EditMenuItemModal from "./EditMenuItemModal";
@@ -17,6 +16,8 @@ import { getRestaurantByUserId } from "@/actions/get-restaurant-by-user-id";
 import emptyMenuImg from "@/public/empty-state-menu.svg";
 import Image from "next/image";
 import TipCard from "@/components/TipCard";
+import { MenuCategory, MenuItem } from "@/types";
+
 interface EditingItem {
   item: MenuItem;
   categoryName: string;
@@ -101,8 +102,8 @@ const MenuManagement = () => {
       />
       <TipCard>
         <p>
-          Organisez votre menu en créant d'abord des catégories (Pizzas, Plats,
-          Desserts...), puis ajoutez vos plats dans chaque catégorie.
+          Organisez votre menu en créant d&apos;abord des catégories (Pizzas,
+          Plats, Desserts...), puis ajoutez vos plats dans chaque catégorie.
         </p>
       </TipCard>
 
@@ -175,7 +176,7 @@ const MenuManagement = () => {
                               ) : (
                                 <div className="w-full h-full bg-gray-200 rounded-lg flex items-center justify-center">
                                   <span className="text-gray-400 text-xs">
-                                    Pas d'image
+                                    Pas d&apos;image
                                   </span>
                                 </div>
                               )}

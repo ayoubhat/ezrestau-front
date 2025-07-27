@@ -38,7 +38,7 @@ const Contact = () => {
               <div className="flex items-center">
                 <Clock className="w-5 h-5 text-orange-600 mr-3" />
                 <div>
-                  <p className="font-medium">Horaires d'ouverture</p>
+                  <p className="font-medium">Horaires d&apos;ouverture</p>
                   <p className="text-gray-600">Lun-Dim: 11h30 - 22h30</p>
                 </div>
               </div>

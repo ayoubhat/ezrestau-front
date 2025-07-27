@@ -49,7 +49,9 @@ const WorkingHours = ({
               >
                 {schedule.day}
                 {schedule.isToday && (
-                  <span className="ml-2 text-sm opacity-80">(Aujourd'hui)</span>
+                  <span className="ml-2 text-sm opacity-80">
+                    (Aujourd&apos;hui)
+                  </span>
                 )}
               </span>
             </div>

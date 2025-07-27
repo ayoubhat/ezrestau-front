@@ -24,7 +24,7 @@ const MentionsLegalesPage = () => {
               <div>
                 <strong className="text-foreground">Raison sociale :</strong>
                 <span className="text-muted-foreground ml-2">
-                  Restaurant Saveurs d'Italie SARL
+                  Restaurant Saveurs d&apos;Italie SARL
                 </span>
               </div>
               <div>
@@ -131,16 +131,17 @@ const MentionsLegalesPage = () => {
             </h2>
             <div>
               <p className="text-muted-foreground leading-relaxed">
-                L'ensemble de ce site relève de la législation française et
-                internationale sur le droit d'auteur et la propriété
+                L&apos;ensemble de ce site relève de la législation française et
+                internationale sur le droit d&apos;auteur et la propriété
                 intellectuelle. Tous les droits de reproduction sont réservés, y
                 compris pour les documents téléchargeables et les
                 représentations iconographiques et photographiques.
               </p>
               <p className="text-muted-foreground leading-relaxed mt-3">
                 La reproduction de tout ou partie de ce site sur un support
-                électronique ou autre quel qu'il soit est formellement interdite
-                sauf autorisation expresse du directeur de publication.
+                électronique ou autre quel qu&apos;il soit est formellement
+                interdite sauf autorisation expresse du directeur de
+                publication.
               </p>
             </div>
           </section>
@@ -154,12 +155,13 @@ const MentionsLegalesPage = () => {
               <p className="text-muted-foreground leading-relaxed">
                 Conformément à la loi « Informatique et Libertés » du 6 janvier
                 1978 modifiée et au Règlement Général sur la Protection des
-                Données (RGPD), vous disposez d'un droit d'accès, de
-                rectification, de portabilité et d'effacement de vos données.
+                Données (RGPD), vous disposez d&apos;un droit d&apos;accès, de
+                rectification, de portabilité et d&apos;effacement de vos
+                données.
               </p>
               <p className="text-muted-foreground leading-relaxed mt-3">
                 Pour exercer ces droits ou pour toute question sur le traitement
-                de vos données, vous pouvez nous contacter à l'adresse :
+                de vos données, vous pouvez nous contacter à l&apos;adresse :
                 contact@saveurs-italie.fr
               </p>
             </div>
@@ -172,7 +174,7 @@ const MentionsLegalesPage = () => {
             </h2>
             <div>
               <p className="text-muted-foreground leading-relaxed">
-                Ce site utilise des cookies pour améliorer l'expérience
+                Ce site utilise des cookies pour améliorer l&apos;expérience
                 utilisateur et analyser le trafic. Les cookies sont de petits
                 fichiers texte stockés sur votre ordinateur par votre navigateur
                 web.

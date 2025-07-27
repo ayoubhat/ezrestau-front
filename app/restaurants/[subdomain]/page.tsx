@@ -35,7 +35,7 @@ const ErrorScreen = ({ onRetry }: { onRetry: () => void }) => {
           Restaurant introuvable
         </h2>
         <p className="text-gray-600 mb-6">
-          Veuillez vérifier l'adresse ou réessayer.
+          Veuillez vérifier l&apos;adresse ou réessayer.
         </p>
 
         {/* Simple button */}
@@ -170,7 +170,7 @@ const RestaurantWebsite = () => {
             Bienvenue au {restaurant.name}
           </h1>
           <p className="text-xl md:text-2xl mb-8">
-            Savourez l'authenticité dans chaque bouchée
+            Savourez l&apos;authenticité dans chaque bouchée
           </p>
           <div className="space-x-4">
             <button className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors">

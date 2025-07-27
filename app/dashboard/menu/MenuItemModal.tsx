@@ -33,7 +33,7 @@ import { Button } from "@/components/ui/button";
 import { Plus, Upload, X } from "lucide-react";
 import { toast } from "sonner";
 import { addItemToCategory } from "@/actions/update-restaurant-menu";
-import { MenuCategory } from "@/actions/get-restaurant-by-id";
+import { MenuCategory } from "@/types";
 
 const formSchema = z.object({
   name: z.string().min(1, "Le nom du plat est requis"),
@@ -237,7 +237,7 @@ const MenuItemModal = ({ categories }: MenuItemModalProps) => {
                               Cliquez pour télécharger une image
                             </label>
                             <p className="text-xs text-gray-500 mt-1">
-                              PNG, JPG, GIF jusqu'à 10MB
+                              PNG, JPG, GIF jusqu&apos;à 10MB
                             </p>
                           </div>
                         </div>

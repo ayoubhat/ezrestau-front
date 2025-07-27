@@ -7,7 +7,7 @@ import Link from "next/link";
 const Pricing = () => {
   const features = [
     "Site web professionnel",
-    "Tableau de bord d'administration",
+    "Tableau de bord d&apos;administration",
     "Sous-domaine gratuit (.ezrestau.com)",
     "Hébergement haute performance",
     "Sécurité et certificats SSL (https)",
@@ -29,7 +29,7 @@ const Pricing = () => {
           </h2>
           <p className="text-md text-gray-600 max-w-2xl mx-auto">
             Tout inclus, sans frais cachés. Démarrez votre transformation
-            digitale dès aujourd'hui.
+            digitale dès aujourd&apos;hui.
           </p>
         </div>
 
@@ -71,7 +71,7 @@ const Pricing = () => {
               <div className="pt-6 border-t border-gray-100">
                 <Link href="/sign-up">
                   <Button className="w-full bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 text-white font-semibold py-4 text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105">
-                    Commencer l'essai gratuit
+                    Commencer l&apos;essai gratuit
                   </Button>
                 </Link>
               </div>

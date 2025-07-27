@@ -1,7 +1,6 @@
 import Link from "next/link";
 import React from "react";
 import { Button } from "../ui/button";
-import { Globe } from "lucide-react";
 
 const Hero = () => {
   return (
@@ -12,7 +11,7 @@ const Hero = () => {
           <span className="text-orange-600 block">restaurant en minutes</span>
         </h1>
         <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-          La solution complète qui permet aux restaurateurs d'augmenter
+          La solution complète qui permet aux restaurateurs d&apos;augmenter
           facilement leur visibilité en ligne avec un site web professionnel.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
