@@ -54,8 +54,8 @@ const DeleteMenuItemDialog = ({
         <AlertDialogHeader>
           <AlertDialogTitle>Supprimer le plat</AlertDialogTitle>
           <AlertDialogDescription>
-            Êtes-vous sûr de vouloir supprimer "{item.name}" ? Cette action est
-            irréversible.
+            Êtes-vous sûr de vouloir supprimer &quot;{item.name}&quot; ? Cette
+            action est irréversible.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>

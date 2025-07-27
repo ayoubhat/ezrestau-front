@@ -205,7 +205,7 @@ const MenuItemModal = ({ categories }: MenuItemModalProps) => {
             <FormField
               control={form.control}
               name="image_url"
-              render={({ field }) => (
+              render={() => (
                 <FormItem>
                   <FormLabel>Image du plat</FormLabel>
                   <FormControl>

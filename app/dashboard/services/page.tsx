@@ -12,10 +12,10 @@ const ServicesPage = () => {
       <TipCard>
         <p>
           Sélectionnez au moins 3 services pour les afficher dans la section
-          <span className="font-medium"> "Nos Services" </span>dans la page
-          d&apos;accueil de votre site web. Nous recommandons de choisir jusqu’à
-          6 services au maximum pour une meilleure présentation. Choisissez ceux
-          qui représentent le mieux votre restaurant.
+          <span className="font-medium"> &quot;Nos Services&quot; </span>dans la
+          page d&apos;accueil de votre site web. Nous recommandons de choisir
+          jusqu&apos;à 6 services au maximum pour une meilleure présentation.
+          Choisissez ceux qui représentent le mieux votre restaurant.
         </p>
       </TipCard>
       <ServicesForm />

@@ -120,7 +120,7 @@ const EditMenuItemModal = ({
 
   const removeImage = () => {
     form.setValue("image_url", undefined);
-    setImagePreview(item.image_url || null); // Reset to original image or null
+    setImagePreview(item.image_url || null);  
   };
 
   return (
@@ -214,7 +214,7 @@ const EditMenuItemModal = ({
             <FormField
               control={form.control}
               name="image_url"
-              render={({ field }) => (
+              render={() => (
                 <FormItem>
                   <FormLabel>Image du plat (optionnel)</FormLabel>
                   <FormControl>

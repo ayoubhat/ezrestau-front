@@ -146,10 +146,11 @@ const RestaurantWebsite = () => {
     );
   };
 
-  // Extract delivery platforms
+  type DeliveryPlatform = { name: string };
+
   const deliveryServices =
     restaurant.delivery_info?.platforms
-      ?.map((platform: any) => {
+      ?.map((platform: DeliveryPlatform) => {
         const platformNameMap: Record<string, string> = {
           deliveroo: "Deliveroo",
           uber_eats: "Uber Eats",
@@ -158,8 +159,6 @@ const RestaurantWebsite = () => {
         return platformNameMap[platform.name] || platform.name;
       })
       .filter(Boolean) || [];
-
-  // ...
 
   return (
     <div className="min-h-screen bg-white">
