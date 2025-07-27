@@ -16,8 +16,7 @@ type Progress = {
 };
 
 const ProgressionCard = ({ progress }: { progress: Progress }) => {
-  const isCompleted = progress.percentage === 100;
-
+ 
   return (
     <div className="bg-white rounded-lg border">
       <CardContent className="p-6 space-y-6">

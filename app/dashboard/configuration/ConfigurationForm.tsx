@@ -165,7 +165,7 @@ const ConfigurationForm = () => {
         <FormField
           control={form.control}
           name="logo_url"
-          render={({ field }) => (
+          render={() => (
             <FormItem>
               <FormLabel>Logo du restaurant</FormLabel>
               <FormControl>

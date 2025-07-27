@@ -101,11 +101,15 @@ const DeliveryServicesForm = () => {
         if (typeof platform === "string") {
           // Handle case where platform is just a string
           return { name: platform, url: "" };
-        } else if (typeof platform === "object" && platform.name) {
+        } else if (
+          typeof platform === "object" &&
+          platform !== null &&
+          "name" in platform
+        ) {
           // Handle case where platform is an object with name and url
           return {
-            name: platform.name,
-            url: platform.url || "",
+            name: (platform as { name: string; url?: string }).name,
+            url: (platform as { name: string; url?: string }).url || "",
           };
         }
         return { name: platform, url: "" };
@@ -163,10 +167,10 @@ const DeliveryServicesForm = () => {
       return updateRestaurantByUserId(payload);
     },
     onSuccess: () => {
-      toast.success("Services de livraison mis à jour avec succès!"),
-        queryClient.invalidateQueries({
-          queryKey: ["restaurant", "user", user?.id],
-        });
+      toast.success("Services de livraison mis à jour avec succès!");
+      queryClient.invalidateQueries({
+        queryKey: ["restaurant", "user", user?.id],
+      });
     },
     onError: (error) => {
       console.error("Update error:", error);

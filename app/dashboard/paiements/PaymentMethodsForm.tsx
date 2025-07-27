@@ -107,10 +107,10 @@ const PaymentMethodsForm = () => {
       return updateRestaurantByUserId(data);
     },
     onSuccess: () => {
-      toast.success("Moyens de paiement mis à jour avec succès!"),
-        queryClient.invalidateQueries({
-          queryKey: ["restaurant", "user", user?.id],
-        });
+      toast.success("Moyens de paiement mis à jour avec succès!");
+      queryClient.invalidateQueries({
+        queryKey: ["restaurant", "user", user?.id],
+      });
     },
     onError: (error) => {
       console.error("Update error:", error);

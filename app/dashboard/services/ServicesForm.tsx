@@ -107,10 +107,10 @@ const ServicesForm = () => {
       return updateRestaurantByUserId(data);
     },
     onSuccess: () => {
-      toast.success("Services mis à jour avec succès!"),
-        queryClient.invalidateQueries({
-          queryKey: ["restaurant", "user", user?.id],
-        });
+      toast.success("Services mis à jour avec succès!");
+      queryClient.invalidateQueries({
+        queryKey: ["restaurant", "user", user?.id],
+      });
     },
     onError: (error) => {
       console.error("Update error:", error);

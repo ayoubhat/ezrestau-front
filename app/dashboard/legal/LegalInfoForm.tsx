@@ -106,10 +106,10 @@ const LegalInfoForm = () => {
       return updateRestaurantByUserId(payload);
     },
     onSuccess: () => {
-      toast.success("Informations légales mises à jour avec succès!"),
-        queryClient.invalidateQueries({
-          queryKey: ["restaurant", "user", user?.id],
-        });
+      toast.success("Informations légales mises à jour avec succès!");
+      queryClient.invalidateQueries({
+        queryKey: ["restaurant", "user", user?.id],
+      });
     },
     onError: (error) => {
       console.error("Update error:", error);

@@ -5,7 +5,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   CreditCard,
-  HelpCircle,
   Clock,
   MapPin,
   Settings,
