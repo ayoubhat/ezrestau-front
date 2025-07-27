@@ -139,7 +139,7 @@ const Menu = ({ menu }: { menu: MenuCategory[] }) => {
             name={item.name}
             description={item.description || ""}
             price={item.price.toString()}
-            image={item.image_url || placeholderImg}
+            image={item.image_url || placeholderImg.src}
           />
         ))}
       </div>
