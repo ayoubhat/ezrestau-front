@@ -97,7 +97,7 @@ const DeliveryServicesForm = () => {
 
     // Transform platforms from API format to form format
     const platforms =
-      deliveryInfo.platforms?.map((platform: any) => {
+      deliveryInfo.platforms?.map((platform: unknown) => {
         if (typeof platform === "string") {
           // Handle case where platform is just a string
           return { name: platform, url: "" };

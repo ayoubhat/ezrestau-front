@@ -42,7 +42,7 @@ export async function uploadToCloudinary(formData: FormData): Promise<string> {
         .end(buffer);
     });
 
-    return (result as any).secure_url;
+    return (result as unknown).secure_url;
   } catch (error) {
     console.error("Cloudinary upload error:", error);
     throw new Error("Failed to upload image");

@@ -10,24 +10,18 @@ const MenuItem = ({
 }: {
   name: string;
   description: string;
-  price: any;
-  image: any;
+  price: string;
+  image: string;
 }) => {
-  const imageSrc = typeof image === "string" ? image : image.src || image;
-  const isExternalImage =
-    typeof image === "string" ||
-    (typeof image === "object" && image.src && typeof image.src === "string");
-
   return (
     <Card className="group hover:shadow-warm transition-all duration-300 overflow-hidden animate-scale-in">
       <div className="relative">
         <Image
-          src={imageSrc}
+          src={image}
           alt={name}
           width={400}
           height={192}
           className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-          unoptimized={isExternalImage}
         />
 
         <div className="absolute top-4 right-4 bg-background/80 backdrop-blur-sm text-gray-800 px-3 py-1 rounded-full font-bold">

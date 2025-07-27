@@ -4,7 +4,7 @@ import { auth } from "@clerk/nextjs/server";
 import { uploadToCloudinary } from "./upload-to-cloudinary";
 
 export async function updateRestaurantByUserId(
-  data: Record<string, any>,
+  data: Record<string, unknown>,
   logoFile?: File
 ) {
   const { userId } = await auth();

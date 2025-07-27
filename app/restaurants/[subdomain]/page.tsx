@@ -106,8 +106,10 @@ const RestaurantWebsite = () => {
     );
   };
 
+  // ...
+
   // Transform opening hours from API format to component format
-  const transformOpeningHours = (openingHours: any) => {
+  const transformOpeningHours = (openingHours: unknown) => {
     // Add null/undefined check
     if (!openingHours || typeof openingHours !== "object") {
       return [];
@@ -123,19 +125,25 @@ const RestaurantWebsite = () => {
       saturday: "Samedi",
     };
 
-    return Object.entries(openingHours).map(([day, hours]: [string, any]) => {
-      const dayName = dayMapping[day];
-      let hoursText = "Fermé";
+    return Object.entries(openingHours as Record<string, any>).map(
+      ([day, hours]: [string, any]) => {
+        const dayName = dayMapping[day];
+        let hoursText = "Fermé";
 
-      if (Array.isArray(hours) && hours.length > 0) {
-        hoursText = hours.map((h) => `${h.open} - ${h.close}`).join(", ");
+        if (Array.isArray(hours) && hours.length > 0) {
+          hoursText = hours
+            .map(
+              (h: { open: string; close: string }) => `${h.open} - ${h.close}`
+            )
+            .join(", ");
+        }
+
+        return {
+          day: dayName,
+          hours: hoursText,
+        };
       }
-
-      return {
-        day: dayName,
-        hours: hoursText,
-      };
-    });
+    );
   };
 
   // Extract delivery platforms
@@ -151,9 +159,7 @@ const RestaurantWebsite = () => {
       })
       .filter(Boolean) || [];
 
-  const transformedOpeningHours = transformOpeningHours(
-    restaurant.opening_hours
-  );
+  // ...
 
   return (
     <div className="min-h-screen bg-white">
@@ -185,7 +191,7 @@ const RestaurantWebsite = () => {
       {hasServices() && <Services services={restaurant.services ?? []} />}
       {hasOpeningHours() && (
         <WorkingHours
-          openingHours={transformedOpeningHours}
+          openingHours={transformOpeningHours(restaurant.opening_hours)}
           title={"Nos Horaires d'Ouverture"}
         />
       )}

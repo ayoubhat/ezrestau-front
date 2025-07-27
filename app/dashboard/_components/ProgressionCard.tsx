@@ -1,11 +1,21 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { cn } from "@/lib/utils";
-import { CheckCircle, Circle, ArrowRight } from "lucide-react";
+import { CardContent } from "@/components/ui/card";
+import { CheckCircle, Circle } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
-const ProgressionCard = ({ progress }: { progress: any }) => {
+type Section = {
+  key: string;
+  name: string;
+  path?: string;
+};
+
+type Progress = {
+  percentage: number;
+  completed: Section[];
+  missing: Section[];
+};
+
+const ProgressionCard = ({ progress }: { progress: Progress }) => {
   const isCompleted = progress.percentage === 100;
 
   return (
@@ -26,13 +36,13 @@ const ProgressionCard = ({ progress }: { progress: any }) => {
           </div>
         </div>
 
-        {progress.completed.length > 0 && (
+        {progress.completed?.length > 0 && (
           <div className="space-y-2">
             <h4 className="text-sm font-medium text-green-700">
               Complétées ({progress.completed.length})
             </h4>
             <div className="space-y-1">
-              {progress.completed.map((section: any) => (
+              {progress.completed.map((section) => (
                 <div
                   key={section.key}
                   className="flex items-center gap-2 text-sm"
@@ -45,20 +55,20 @@ const ProgressionCard = ({ progress }: { progress: any }) => {
           </div>
         )}
 
-        {progress.missing.length > 0 && (
+        {progress.missing?.length > 0 && (
           <div className="space-y-2">
             <h4 className="text-sm font-medium text-orange-700">
               À compléter ({progress.missing.length})
             </h4>
             <div className="space-y-2">
-              {progress.missing.map((section: any) => (
+              {progress.missing.map((section) => (
                 <div
                   key={section.key}
                   className="flex items-center justify-between"
                 >
                   <div className="flex items-center gap-2 text-sm">
                     <Circle className="h-4 w-4 text-orange-700" />
-                    <Link href={section.path} className="underline">
+                    <Link href={section.path || "#"} className="underline">
                       <span>{section.name}</span>
                     </Link>
                   </div>

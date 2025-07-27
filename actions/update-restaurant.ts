@@ -4,7 +4,7 @@ import { uploadToCloudinary } from "./upload-to-cloudinary";
 
 export async function updateRestaurant(
   id: string,
-  data: Record<string, any>,
+  data: Record<string, unknown>,
   logoFile?: File
 ) {
   let updateData = { ...data };

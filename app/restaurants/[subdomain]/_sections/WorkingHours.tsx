@@ -4,7 +4,7 @@ const WorkingHours = ({
   openingHours,
   title,
 }: {
-  openingHours: Array<any>;
+  openingHours: Array<unknown>;
   title: String;
 }) => {
   const today = new Date().getDay();
