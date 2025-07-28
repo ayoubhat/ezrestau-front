@@ -9,6 +9,7 @@ import { getRestaurantBySubdomain } from "@/actions/get-restaurant-by-subdomain"
 import { useQuery } from "@tanstack/react-query";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import Hero from "./_sections/Hero";
 
 // Minimalist Loading Component
 const LoadingScreen = () => {
@@ -163,29 +164,7 @@ const RestaurantWebsite = () => {
   return (
     <div className="min-h-screen bg-white">
       <Navbar restaurant={restaurant} />
-
-      <section
-        id="accueil"
-        className="relative h-screen flex items-center justify-center bg-gradient-to-r from-orange-500 to-red-600"
-      >
-        <div className="absolute inset-0 bg-black opacity-40"></div>
-        <div className="relative z-10 text-center text-white px-4">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">
-            Bienvenue au {restaurant.name}
-          </h1>
-          <p className="text-xl md:text-2xl mb-8">
-            Savourez l&apos;authenticité dans chaque bouchée
-          </p>
-          <div className="space-x-4">
-            <button className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors">
-              Voir la carte
-            </button>
-            <button className="bg-transparent border-2 border-white hover:bg-white hover:text-orange-600 text-white px-8 py-3 rounded-lg font-semibold transition-colors">
-              Commander maintenant
-            </button>
-          </div>
-        </div>
-      </section>
+      <Hero name={restaurant.name} />
       {hasMenu() && <MenuSection menu={restaurant.menu ?? []} />}
       {hasServices() && <Services services={restaurant.services ?? []} />}
       {hasOpeningHours() && (

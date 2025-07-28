@@ -56,6 +56,12 @@ const LandingPageNavbar = () => {
           </div>
 
           <SignedIn>
+            <Link href="/dashboard">
+              <Button variant="outline" size="sm">
+                Mon restaurant
+              </Button>
+            </Link>
+
             <UserButton />
           </SignedIn>
         </nav>
