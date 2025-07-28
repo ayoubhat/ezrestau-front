@@ -23,7 +23,7 @@ const Hero = () => {
               Créer mon site gratuitement
             </Button>
           </Link>
-          <Link href="/restaurants/demo">
+          <Link href="/demo">
             <Button variant="outline" size="lg" className="text-lg px-4">
               Voir la démo
             </Button>

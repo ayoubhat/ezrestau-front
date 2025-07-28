@@ -112,18 +112,16 @@ const Footer = ({ restaurant }: { restaurant: Restaurant }) => {
             <h4 className="text-md font-semibold mb-6">Informations</h4>
             <ul className="text-sm space-y-3">
               <li>
-                <Link href="/">Accueil</Link>
+                <Link href="/demo">Accueil</Link>
               </li>
               <li>
-                <Link href="demo/menu">La carte</Link>
+                <Link href="/demo">La carte</Link>
               </li>
               <li>
-                <Link href="demo/livraison-a-domicile">
-                  Livraison à domicile
-                </Link>
+                <Link href="/demo">Livraison à domicile</Link>
               </li>
               <li>
-                <Link href="demo/livraison-a-domicile">Contactez nous</Link>
+                <Link href="/demo">Contactez nous</Link>
               </li>
             </ul>
           </div>

@@ -65,9 +65,7 @@ export interface ProgressResult {
   sections: ProgressSection[];
 }
 
-export const calculateProgress = (
-  restaurant: Restaurant | null | undefined
-): ProgressResult => {
+export const calculateProgress = (restaurant: Restaurant): ProgressResult => {
   if (!restaurant)
     return {
       percentage: 0,
@@ -93,7 +91,7 @@ export const calculateProgress = (
       key: "location",
       name: "Localisation",
       completed: !!restaurant.address,
-      path: "/dashboard/localisation",
+      path: "/dashboard/location",
     },
     {
       key: "hours",
