@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const MentionsLegalesPage = () => {
   return (
     <div className="min-h-screen bg-background py-4 md:py-12">
@@ -110,12 +112,12 @@ const MentionsLegalesPage = () => {
                 Adresse : San Francisco, CA, USA
                 <br />
                 Site web :{" "}
-                <a
+                <Link
                   href="https://lovable.dev"
                   className="text-primary hover:underline"
                 >
                   https://lovable.dev
-                </a>
+                </Link>
               </p>
             </div>
           </section>

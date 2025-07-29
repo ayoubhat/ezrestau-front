@@ -39,18 +39,18 @@ const LandingPageNavbar = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a
+            <Link
               href="#features"
               className="text-gray-600 hover:text-orange-600 transition-colors"
             >
               Fonctionnalités
-            </a>
-            <a
+            </Link>
+            <Link
               href="#pricing"
               className="text-gray-600 hover:text-orange-600 transition-colors"
             >
               Tarif
-            </a>
+            </Link>
 
             <div className="flex items-center space-x-2">
               <SignedOut>
@@ -98,20 +98,20 @@ const LandingPageNavbar = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden mt-4 pb-4 border-t border-gray-200">
             <nav className="flex flex-col space-y-4 pt-4">
-              <a
+              <Link
                 href="#features"
                 className="text-gray-600 hover:text-orange-600 transition-colors py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Fonctionnalités
-              </a>
-              <a
+              </Link>
+              <Link
                 href="#pricing"
                 className="text-gray-600 hover:text-orange-600 transition-colors py-2"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 Tarif
-              </a>
+              </Link>
 
               {/* Mobile Auth Buttons */}
               <div className="flex flex-col space-y-3 pt-4 border-t border-gray-200">

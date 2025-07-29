@@ -97,7 +97,7 @@ export function AppSidebar() {
         <SidebarMenu>
           <SidebarMenuItem className="w-full">
             <SidebarMenuButton asChild>
-              <a href="/">
+              <Link href="/">
                 <ChefHat className="h-6 w-6 text-orange-600" />
                 <p className="flex justify-between items-center space-x-2 w-full">
                   <span className="text-lg font-bold text-gray-900">
@@ -110,7 +110,7 @@ export function AppSidebar() {
                     BETA
                   </Badge>
                 </p>
-              </a>
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>

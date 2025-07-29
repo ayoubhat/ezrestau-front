@@ -65,7 +65,7 @@ const Footer = ({ restaurant }: { restaurant: Restaurant }) => {
                 </h5>
                 <div className="flex space-x-4">
                   {socialLinks.map((social, index) => (
-                    <a
+                    <Link
                       key={index}
                       href={social.url}
                       target="_blank"
@@ -75,7 +75,7 @@ const Footer = ({ restaurant }: { restaurant: Restaurant }) => {
                       {socialIconMap[social.icon.toLowerCase()] ?? (
                         <span className="w-4 h-4 text-gray-400">?</span>
                       )}
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -146,12 +146,12 @@ const Footer = ({ restaurant }: { restaurant: Restaurant }) => {
               &copy; 2025 {restaurantName}. Tous droits réservés. - Site créé
               avec <FaHeart className="w-3 h-5 text-amber-400" />
               par
-              <a
+              <Link
                 href={"/"}
                 className="text-amber-400 hover:text-amber-300 transition-colors font-medium hover:underline"
               >
                 EzRestau
-              </a>
+              </Link>
             </p>
             <div className="flex space-x-6 mt-4 md:mt-0">
               <Link
