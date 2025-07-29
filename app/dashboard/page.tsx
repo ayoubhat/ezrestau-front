@@ -21,7 +21,10 @@ const DashboardPage = () => {
   if (isLoading || !isLoaded) {
     return (
       <div className="space-y-4">
-        <PageHeader title="Tableau de bord" description="" />
+        <PageHeader
+          title="Tableau de bord"
+          description="Gérez votre restaurant et suivez vos progrès"
+        />
         <div>Chargement...</div>
       </div>
     );
@@ -35,6 +38,7 @@ const DashboardPage = () => {
         title="Tableau de bord"
         description="Gérez votre restaurant et suivez vos progrès"
       />
+
       <TipCard>
         <p>
           Complétez votre configuration à au moins 70% pour pouvoir publier

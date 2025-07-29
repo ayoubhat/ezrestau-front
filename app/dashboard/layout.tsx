@@ -1,6 +1,6 @@
-import Header from "@/app/dashboard/_components/Header";
-import Sidebar from "./_components/Sidebar";
-
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { AppSidebar } from "./_components/app-sidebar";
+import Header from "./_components/Header";
 export default function DashboardLayout({
   children,
 }: Readonly<{
@@ -8,15 +8,13 @@ export default function DashboardLayout({
 }>) {
   return (
     <div>
-      <div className="flex flex-col h-screen bg-gray-50">
-        <Header />
-        <div className="flex flex-1 overflow-hidden">
-          <Sidebar />
-          <main className="flex-1 overflow-x-hidden overflow-y-auto">
-            <div className="container p-4">{children}</div>
-          </main>
-        </div>
-      </div>
+      <SidebarProvider>
+        <AppSidebar />
+        <SidebarInset>
+          <Header />
+          <div className="flex flex-1 flex-col gap-4 p-4 pt-0">{children}</div>
+        </SidebarInset>
+      </SidebarProvider>
     </div>
   );
 }

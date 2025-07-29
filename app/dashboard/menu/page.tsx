@@ -91,7 +91,15 @@ const MenuManagement = () => {
   };
 
   if (isLoading || !isLoaded) {
-    return <div>Chargement...</div>;
+    return (
+      <div className="space-y-4">
+        <PageHeader
+          title="La carte"
+          description="Gérez vos produits et catégories"
+        />
+        <p> Chargement...</p>
+      </div>
+    );
   }
 
   return (
@@ -107,7 +115,7 @@ const MenuManagement = () => {
         </p>
       </TipCard>
 
-      <div className="flex justify-between gap-1 md:gap-2 felx-wrap">
+      <div className="flex justify-between gap-2 flex-wrap-reverse sm:flex-nowrap md:gap-2 felx-wrap">
         <div className="relative w-full">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
           <Input

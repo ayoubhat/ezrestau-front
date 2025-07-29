@@ -6,7 +6,7 @@ const ConfigurationPage = () => {
     <div className="space-y-4">
       <PageHeader
         title="Configuration générale"
-        description="Gérez les informations de base et l'optimisation SEO de votre établissement"
+        description="Gérez les informations de base de votre établissement"
       />
       <ConfigurationForm />
     </div>

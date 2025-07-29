@@ -108,7 +108,7 @@ const MenuItemModal = ({ categories }: MenuItemModalProps) => {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button className="gap-2">
+        <Button className="w-full w-full md:w-fit gap-2">
           <Plus className="h-4 w-4" />
           Ajouter un plat
         </Button>
