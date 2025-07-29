@@ -7,8 +7,8 @@ import Link from "next/link";
 const Pricing = () => {
   const features = [
     "Site web professionnel",
-    "Tableau de bord d&apos;administration",
-    "Sous-domaine gratuit (.ezrestau.com)",
+    "Tableau de bord d'administration",
+    "Sous-domaine gratuit (.ezrestau.fr)",
     "Hébergement haute performance",
     "Sécurité et certificats SSL (https)",
     "Optimisé pour les moteurs de recherche",

@@ -167,9 +167,104 @@ const OpeningHoursForm = () => {
             return (
               <div
                 key={key}
-                className={`p-4 ${index !== DAYS.length - 1 ? "border-b" : ""}`}
+                className={`p-3 sm:p-4 ${
+                  index !== DAYS.length - 1 ? "border-b" : ""
+                }`}
               >
-                <div className="flex items-start justify-between">
+                {/* Mobile layout - stacked vertically */}
+                <div className="block sm:hidden">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="font-medium text-gray-900 text-sm">
+                      {label}
+                    </span>
+                    <FormField
+                      control={form.control}
+                      name={`opening_hours.${key}`}
+                      render={() => (
+                        <FormItem className="flex items-center gap-2">
+                          <FormControl>
+                            <Switch
+                              checked={isOpen}
+                              onCheckedChange={(checked) =>
+                                toggleDay(key, checked)
+                              }
+                            />
+                          </FormControl>
+                          {!isOpen && (
+                            <FormLabel className="text-gray-500 font-normal text-sm">
+                              Fermé
+                            </FormLabel>
+                          )}
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+
+                  {isOpen && (
+                    <div className="space-y-3">
+                      {daySlots.map((slot, slotIndex) => (
+                        <div key={slotIndex} className="space-y-2">
+                          <div className="flex items-center gap-2">
+                            <Input
+                              type="time"
+                              value={slot.open}
+                              onChange={(e) =>
+                                updateTimeSlot(
+                                  key,
+                                  slotIndex,
+                                  "open",
+                                  e.target.value
+                                )
+                              }
+                              className="flex-1 min-w-0"
+                            />
+                            <span className="text-gray-500 text-sm px-1">
+                              à
+                            </span>
+                            <Input
+                              type="time"
+                              value={slot.close}
+                              onChange={(e) =>
+                                updateTimeSlot(
+                                  key,
+                                  slotIndex,
+                                  "close",
+                                  e.target.value
+                                )
+                              }
+                              className="flex-1 min-w-0"
+                            />
+                            {daySlots.length > 1 && (
+                              <Button
+                                type="button"
+                                variant="ghost"
+                                size="sm"
+                                onClick={() => removeTimeSlot(key, slotIndex)}
+                                className="p-1 h-8 w-8 text-red-600 hover:text-red-700 hover:bg-red-50 flex-shrink-0"
+                              >
+                                <Trash2 className="h-4 w-4" />
+                              </Button>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+
+                      <Button
+                        type="button"
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => addTimeSlot(key)}
+                        className="w-full text-blue-600 hover:text-blue-700 hover:bg-blue-50 text-sm"
+                      >
+                        <Plus className="h-4 w-4 mr-1" />
+                        Ajouter une plage horaire
+                      </Button>
+                    </div>
+                  )}
+                </div>
+
+                {/* Desktop layout - horizontal */}
+                <div className="hidden sm:flex items-start justify-between">
                   <div className="flex items-center gap-4 min-w-[200px]">
                     <span className="font-medium text-gray-900 min-w-[80px]">
                       {label}
@@ -264,7 +359,11 @@ const OpeningHoursForm = () => {
           })}
         </div>
 
-        <Button type="submit" disabled={mutation.isPending}>
+        <Button
+          type="submit"
+          disabled={mutation.isPending}
+          className="w-full sm:w-auto"
+        >
           {mutation.isPending ? "Enregistrement..." : "Enregistrer"}
         </Button>
       </form>

@@ -341,7 +341,10 @@ export const restaurant: Restaurant = {
     zones: ["75001", "75002", "75003", "75004"],
   },
   opening_hours: {
-    monday: [{ open: "11:30", close: "23:00" }],
+    monday: [
+      { open: "11:30", close: "23:00" },
+      { open: "11:30", close: "23:00" },
+    ],
     tuesday: [{ open: "11:30", close: "23:00" }],
     wednesday: [{ open: "11:30", close: "23:00" }],
     thursday: [{ open: "11:30", close: "23:00" }],

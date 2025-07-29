@@ -89,7 +89,7 @@ const RestaurantWebsite = () => {
       .filter(Boolean) || [];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="flex flex-col gap-4 min-h-screen bg-white">
       <Navbar restaurant={restaurant} />
       <Hero name={restaurant.name} />
       {hasMenu() && <MenuSection menu={restaurant.menu ?? []} />}

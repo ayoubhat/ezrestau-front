@@ -11,7 +11,7 @@ const SectionLayout = ({
 }) => {
   return (
     <section
-      className={`flex flex-col justify-center items-center p-6 ${bgColor}`}
+      className={`flex flex-col justify-center items-center p-2 sm:p-6 w-full ${bgColor}`}
     >
       <div className="text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-orange-500 mb-4">
@@ -22,7 +22,7 @@ const SectionLayout = ({
           {description}
         </p>
       </div>
-      <div className="max-w-6xl">{children}</div>
+      <div className="w-full max-w-6xl">{children}</div>
     </section>
   );
 };
