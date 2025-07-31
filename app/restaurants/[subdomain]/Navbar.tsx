@@ -19,13 +19,6 @@ interface NavbarProps {
 }
 
 const NavBar = ({ name, logo, phone, delivery_info }: NavbarProps) => {
-  const menuItems = [
-    {
-      label: "Blog",
-      path: "/blog",
-    },
-  ];
-
   const uberPlatform = delivery_info?.platforms?.find(
     (platform) => platform.name === "uber_eats"
   );

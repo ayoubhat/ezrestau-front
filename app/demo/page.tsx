@@ -5,7 +5,6 @@ import WorkingHours from "../restaurants/[subdomain]/_sections/WorkingHours";
 import Footer from "../restaurants/[subdomain]/Footer";
 import { restaurant } from "../demo/demo-restaurant";
 import Hero from "../restaurants/[subdomain]/_sections/Hero";
-import NavBar from "../restaurants/[subdomain]/Navbar";
 
 const RestaurantWebsite = () => {
   // Helper functions to check if data exists
