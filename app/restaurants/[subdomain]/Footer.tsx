@@ -191,13 +191,13 @@ const Footer = ({ restaurant }: { restaurant: Restaurant }) => {
                 Administration
               </Link>
               <Link
-                href={"/mentions-legales"}
+                href={"/"}
                 className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm hover:underline"
               >
                 Mentions légales
               </Link>
               <Link
-                href={"/politique-confidentialite"}
+                href={"/"}
                 className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm hover:underline"
               >
                 Politique de confidentialité

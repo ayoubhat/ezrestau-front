@@ -128,7 +128,7 @@ export function AppSidebar() {
                       asChild
                       isActive={pathname === item.url}
                     >
-                      <Link href={item.url}>
+                      <Link href={item.url} className="hover:font-semibold">
                         <item.icon />
                         <span>{item.name}</span>
                       </Link>

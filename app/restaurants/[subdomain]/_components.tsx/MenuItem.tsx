@@ -15,7 +15,7 @@ const MenuItem = ({
 }) => {
   return (
     <Card className="group hover:shadow-warm transition-all duration-300 overflow-hidden animate-scale-in">
-      <div className="relative">
+      <div className="relative bg-gradient-to-tr from-orange-400 via-orange-300 to-yellow-200">
         <Image
           src={image}
           alt={name}

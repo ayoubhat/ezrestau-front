@@ -127,7 +127,7 @@ const Menu = ({ menu }: { menu: MenuCategory[] }) => {
       </div>
 
       <div
-        className={`grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8 transition-all duration-500 ${
+        className={`grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 transition-all duration-500 ${
           animatingItems
             ? "opacity-0 transform translate-y-4"
             : "opacity-100 transform translate-y-0"

@@ -6,7 +6,7 @@ export const restaurant: Restaurant = {
   subdomain: "burger-street",
   phone: "01 42 36 58 79",
   email: "contact@burgerstreet.fr",
-  address: "123 Rue de la Street Food",
+  address: "12 Rue de la Street Food",
   postal_code: "75001",
   city: "Paris",
   latitude: 48.8566,
@@ -23,45 +23,57 @@ export const restaurant: Restaurant = {
       category: "Nos burgers",
       items: [
         {
-          name: "Hamburger",
-          description: "Steak 45g, cheddar",
-          price: 4.9,
-          image_url:
-            "/demo-restaurant/photoshoot_for_chez_dimo_restaurant_de_burgers_bougnat_550x440.2-2048x1639.jpg",
-        },
-        {
-          name: "Chicken Crispy Burger",
-          description:
-            "Filet de poulet pané, salade iceberg, tomate, sauce mayo",
-          price: 11.9,
-          image_url:
-            "/demo-restaurant/c375a660-46a9-4ab7-97c8-e77d113213d6.webp",
-        },
-        {
-          name: "BBQ Bacon Burger",
-          description:
-            "Steak haché, bacon grillé, oignons caramélisés, sauce BBQ",
-          price: 14.5,
-          image_url:
-            "/demo-restaurant/photoshoot_for_chez_dimo_restaurant_de_burgers_cajun_550x440.2-2048x1639.jpg",
-        },
-        {
-          name: "Veggie Deluxe Burger",
-          description: "Steak végétarien, avocat, tomate, salade, sauce vegan",
-          price: 13.9,
-          image_url:
-            "/demo-restaurant/photoshoot_for_chez_dimo_restaurant_de_burgers_helvetique_550x440.2-2048x1639.jpg",
-        },
-        {
           name: "Double Cheese Burger",
           description:
             "Double steak haché, double cheddar, cornichons, sauce burger",
           price: 16.9,
+          image_url: "/demo-restaurant/double-cheese.webp",
         },
         {
           name: "Fish Burger",
           description: "Filet de poisson pané, salade, tomate, sauce tartare",
           price: 13.5,
+          image_url: "/demo-restaurant/fish-burger.png",
+        },
+        {
+          name: "Classic Burger",
+          description: "Steak haché, cheddar, salade, tomate, sauce burger",
+          price: 13.5,
+          image_url: "/demo-restaurant/classic-burger.png",
+        },
+        {
+          name: "Chicken Burger",
+          description: "Poulet pané, salade, tomate, sauce mayo",
+          price: 13.5,
+          image_url: "/demo-restaurant/chicken-burger.png",
+        },
+        {
+          name: "Chèvre Miel Burger",
+          description:
+            "Double Smashed, Cheddar, Sauce au choix, Tomate, Salade, Oignon, Chèvre, Miel",
+          price: 13.5,
+          image_url: "/demo-restaurant/chevre-miel-burger.png",
+        },
+        {
+          name: "Big Bacon",
+          description:
+            "3 steaks, Cheddar, Sauce au choix, Tomate, Salade, Oignon, Chèvre, Miel",
+          price: 13.5,
+          image_url: "/demo-restaurant/big-bacon.png",
+        },
+        {
+          name: "Mexican Burger",
+          description:
+            "Double Smashed, Cheddar, Sauce au choix, Tomate, Salade, Oignon, Guacamole, Jalapeños",
+          price: 13.5,
+          image_url: "/demo-restaurant/mexican-burger.png",
+        },
+        {
+          name: "Le Frenchy",
+          description:
+            "Double Smashed, Cheddar, Sauce au choix, Tomate, Salade, Oignon, Fromage de chèvre, Miel",
+          price: 13.5,
+          image_url: "/demo-restaurant/le-frenchy.png",
         },
       ],
     },
@@ -72,31 +84,37 @@ export const restaurant: Restaurant = {
           name: "Pizza Margherita",
           description: "Sauce tomate, mozzarella, basilic frais",
           price: 11.9,
+          image_url: "/demo-restaurant/pizza-margherita.webp",
         },
         {
           name: "Pizza Pepperoni",
           description: "Sauce tomate, mozzarella, pepperoni épicé",
           price: 13.9,
+          image_url: "/demo-restaurant/pepperoni-pizza.webp",
         },
         {
           name: "Pizza 4 Fromages",
           description: "Mozzarella, gorgonzola, parmesan, chèvre",
           price: 14.5,
+          image_url: "/demo-restaurant/4-cheeses-pizza.webp",
         },
         {
           name: "Pizza Végétarienne",
           description: "Légumes grillés, mozzarella, sauce tomate, herbes",
           price: 13.5,
+          image_url: "/demo-restaurant/pizza-parmigiana.webp",
         },
         {
           name: "Pizza BBQ Chicken",
           description: "Poulet grillé, oignons rouges, sauce BBQ, mozzarella",
           price: 15.9,
+          image_url: "/demo-restaurant/bbq-chicken-pizza.jpg",
         },
         {
           name: "Pizza Saumon",
           description: "Saumon fumé, crème fraîche, aneth, mozzarella",
           price: 16.9,
+          image_url: "/demo-restaurant/pizza-saumon.jpg",
         },
       ],
     },
@@ -104,34 +122,40 @@ export const restaurant: Restaurant = {
       category: "Nos tacos",
       items: [
         {
-          name: "Taco Beef",
+          name: "Tacos Beef",
           description: "Viande de bœuf épicée, salade, tomate, sauce mexicaine",
           price: 8.9,
+          image_url: "/demo-restaurant/tacos.webp",
         },
         {
-          name: "Taco Chicken",
+          name: "Tacos Chicken",
           description: "Poulet grillé, avocat, salade, sauce ranch",
           price: 8.5,
+          image_url: "/demo-restaurant/tacos.webp",
         },
         {
-          name: "Taco Fish",
+          name: "Tacos Fish",
           description: "Poisson grillé, chou rouge, sauce citron vert",
           price: 9.5,
+          image_url: "/demo-restaurant/tacos.webp",
         },
         {
-          name: "Taco Veggie",
+          name: "Tacos Veggie",
           description: "Haricots noirs, légumes grillés, guacamole",
           price: 7.9,
+          image_url: "/demo-restaurant/tacos.webp",
         },
         {
-          name: "Taco Chorizo",
+          name: "Tacos Chorizo",
           description: "Chorizo épicé, poivrons, oignons, sauce piquante",
           price: 9.9,
+          image_url: "/demo-restaurant/tacos.webp",
         },
         {
-          name: "Taco Carnitas",
+          name: "Tacos Carnitas",
           description: "Porc effiloché, oignons caramélisés, coriandre",
           price: 10.5,
+          image_url: "/demo-restaurant/tacos.webp",
         },
       ],
     },
@@ -142,101 +166,73 @@ export const restaurant: Restaurant = {
           name: "Sandwich Club",
           description: "Poulet, bacon, salade, tomate, mayo, pain de mie",
           price: 9.9,
+          image_url: "/demo-restaurant/sandwich.png",
         },
         {
           name: "Sandwich Jambon Beurre",
           description: "Jambon de Paris, beurre, cornichons, baguette fraîche",
           price: 6.5,
+          image_url: "/demo-restaurant/sandwich.png",
         },
         {
           name: "Sandwich Thon Crudités",
           description: "Thon, tomate, concombre, salade, mayo, pain complet",
           price: 8.5,
+          image_url: "/demo-restaurant/sandwich.png",
         },
         {
           name: "Sandwich Poulet Curry",
           description: "Poulet au curry, salade, tomate, pain indien",
           price: 9.5,
+          image_url: "/demo-restaurant/sandwich.png",
         },
         {
           name: "Sandwich Végétarien",
           description: "Avocat, tomate, concombre, fromage frais, pain complet",
           price: 8.9,
+          image_url: "/demo-restaurant/sandwich.png",
         },
         {
           name: "Sandwich Pastrami",
           description: "Pastrami, cornichons, moutarde, pain de seigle",
           price: 11.5,
+          image_url: "/demo-restaurant/sandwich.png",
         },
       ],
     },
     {
-      category: "Nos desserts",
+      category: "Nos wraps",
       items: [
         {
-          name: "Brownie Chocolat",
-          description: "Brownie au chocolat noir, noix, glace vanille",
-          price: 6.5,
+          name: "Wrap Poulet Caesar",
+          description: "Poulet grillé, salade romaine, sauce César",
+          price: 8.5,
+          image_url: "/demo-restaurant/wrap.webp",
         },
         {
-          name: "Cheesecake New York",
-          description: "Cheesecake crémeux, coulis de fruits rouges",
+          name: "Wrap Végétarien",
+          description: "Légumes grillés, houmous, roquette",
+          price: 7.5,
+          image_url: "/demo-restaurant/wrap.webp",
+        },
+        {
+          name: "Wrap Saumon Fumé",
+          description: "Saumon fumé, avocat, crème fraîche, roquette",
+          price: 9.5,
+          image_url: "/demo-restaurant/wrap.webp",
+        },
+        {
+          name: "Wrap Tex-Mex",
+          description:
+            "Viande hachée épicée, haricots rouges, maïs, sauce salsa",
+          price: 8.9,
+          image_url: "/demo-restaurant/wrap.webp",
+        },
+        {
+          name: "Wrap Falafel",
+          description: "Falafels, salade, tomate, sauce tahini",
           price: 7.9,
-        },
-        {
-          name: "Muffin Myrtilles",
-          description: "Muffin moelleux aux myrtilles fraîches",
-          price: 4.5,
-        },
-        {
-          name: "Cookie Chocolat",
-          description: "Cookie géant aux pépites de chocolat",
-          price: 3.9,
-        },
-        {
-          name: "Tiramisu Maison",
-          description: "Tiramisu traditionnel fait maison",
-          price: 6.9,
-        },
-        {
-          name: "Donut Glacé",
-          description: "Donut moelleux avec glaçage coloré",
-          price: 3.5,
-        },
-      ],
-    },
-    {
-      category: "Nos boissons",
-      items: [
-        {
-          name: "Coca-Cola",
-          description: "Coca-Cola original 33cl",
-          price: 2.5,
-        },
-        {
-          name: "Jus d'Orange Frais",
-          description: "Jus d'orange pressé minute",
-          price: 4.5,
-        },
-        {
-          name: "Smoothie Fruits Rouges",
-          description: "Smoothie fraises, framboises, myrtilles",
-          price: 5.9,
-        },
-        {
-          name: "Café Espresso",
-          description: "Café espresso italien",
-          price: 2.0,
-        },
-        {
-          name: "Thé Glacé Pêche",
-          description: "Thé glacé parfum pêche 50cl",
-          price: 3.5,
-        },
-        {
-          name: "Milkshake Vanille",
-          description: "Milkshake crémeux à la vanille",
-          price: 4.9,
+          image_url: "/demo-restaurant/wrap.webp",
         },
       ],
     },
@@ -248,69 +244,99 @@ export const restaurant: Restaurant = {
           description:
             "Salade romaine, croûtons, parmesan, poulet grillé, sauce césar",
           price: 11.9,
+          image_url: "/demo-restaurant/salade.jpg",
         },
         {
           name: "Salade Mexicaine",
           description:
             "Salade verte, haricots rouges, maïs, avocat, sauce mexicaine",
           price: 10.5,
+          image_url: "/demo-restaurant/salade.jpg",
         },
         {
           name: "Salade Chèvre Chaud",
           description:
             "Salade verte, chèvre chaud, noix, miel, tomates cerises",
           price: 12.5,
+          image_url: "/demo-restaurant/salade.jpg",
         },
         {
           name: "Salade Saumon",
           description: "Salade verte, saumon fumé, avocat, concombre, aneth",
           price: 14.9,
+          image_url: "/demo-restaurant/salade.jpg",
         },
         {
           name: "Salade Orientale",
           description: "Salade verte, falafels, houmous, tomate, concombre",
           price: 11.5,
+          image_url: "/demo-restaurant/salade.jpg",
         },
         {
           name: "Salade Fitness",
           description:
             "Salade verte, quinoa, légumes grillés, graines, vinaigrette légère",
           price: 10.9,
+          image_url: "/demo-restaurant/salade.jpg",
         },
       ],
     },
     {
-      category: "Tacos",
+      category: "Nos desserts",
       items: [
         {
-          name: "Taco Beef",
-          description: "Viande de bœuf épicée, salade, tomate, sauce mexicaine",
-          price: 8.9,
+          name: "Brownie Chocolat",
+          description: "Brownie au chocolat noir, noix, glace vanille",
+          price: 6.5,
+          image_url: "/demo-restaurant/brownie.webp",
         },
         {
-          name: "Taco Chicken",
-          description: "Poulet grillé, avocat, salade, sauce ranch",
-          price: 8.5,
-        },
-        {
-          name: "Taco Fish",
-          description: "Poisson grillé, chou rouge, sauce citron vert",
-          price: 9.5,
-        },
-        {
-          name: "Taco Veggie",
-          description: "Haricots noirs, légumes grillés, guacamole",
+          name: "Cheesecake New York",
+          description: "Cheesecake crémeux, coulis de fruits rouges",
           price: 7.9,
+          image_url: "/demo-restaurant/cheesecake.webp",
         },
         {
-          name: "Taco Chorizo",
-          description: "Chorizo épicé, poivrons, oignons, sauce piquante",
-          price: 9.9,
+          name: "Muffin Myrtilles",
+          description: "Muffin moelleux aux myrtilles fraîches",
+          price: 4.5,
+          image_url: "/demo-restaurant/muffin.avif",
         },
         {
-          name: "Taco Carnitas",
-          description: "Porc effiloché, oignons caramélisés, coriandre",
-          price: 10.5,
+          name: "Cookie Chocolat",
+          description: "Cookie géant aux pépites de chocolat",
+          price: 3.9,
+          image_url: "/demo-restaurant/cookie.webp",
+        },
+      ],
+    },
+    {
+      category: "Nos boissons",
+      items: [
+        {
+          name: "Coca-Cola",
+          description: "Coca-Cola original 33cl",
+          price: 2.5,
+          image_url: "/demo-restaurant/cocacola.webp",
+        },
+        {
+          name: "Jus d'Orange Frais",
+          description: "Jus d'orange pressé minute",
+          price: 4.5,
+          image_url: "/demo-restaurant/jus-orange.png",
+        },
+        {
+          name: "Smoothie Fruits Rouges",
+          description: "Smoothie fraises, framboises, myrtilles",
+          price: 5.9,
+          image_url: "/demo-restaurant/smoothie.webp",
+        },
+
+        {
+          name: "Milkshake Vanille",
+          description: "Milkshake crémeux à la vanille",
+          price: 4.9,
+          image_url: "/demo-restaurant/vanille.png",
         },
       ],
     },
@@ -341,16 +367,16 @@ export const restaurant: Restaurant = {
     zones: ["75001", "75002", "75003", "75004"],
   },
   opening_hours: {
-    monday: [
+    lundi: [
       { open: "11:30", close: "23:00" },
       { open: "11:30", close: "23:00" },
     ],
-    tuesday: [{ open: "11:30", close: "23:00" }],
-    wednesday: [{ open: "11:30", close: "23:00" }],
-    thursday: [{ open: "11:30", close: "23:00" }],
-    friday: [{ open: "11:30", close: "23:30" }],
-    saturday: [{ open: "12:00", close: "23:30" }],
-    sunday: [{ open: "12:00", close: "22:30" }],
+    mardi: [{ open: "11:30", close: "23:00" }],
+    mercredi: [{ open: "11:30", close: "23:00" }],
+    jeudi: [{ open: "11:30", close: "23:00" }],
+    vendredi: [{ open: "11:30", close: "23:30" }],
+    samedi: [{ open: "12:00", close: "23:30" }],
+    dimanche: [{ open: "12:00", close: "22:30" }],
   },
   payments_accepted: [
     "Espèces",

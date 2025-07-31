@@ -7,7 +7,6 @@ import WorkingHours from "./_sections/WorkingHours";
 import { useParams } from "next/navigation";
 import { getRestaurantBySubdomain } from "@/actions/get-restaurant-by-subdomain";
 import { useQuery } from "@tanstack/react-query";
-import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Hero from "./_sections/Hero";
 
@@ -74,7 +73,6 @@ const RestaurantWebsite = () => {
     return <ErrorScreen onRetry={() => refetch()} />;
   }
 
-  // Helper functions to check if data exists
   const hasMenu = () => {
     return (
       restaurant.menu &&
@@ -107,46 +105,6 @@ const RestaurantWebsite = () => {
     );
   };
 
-  // ...
-
-  // Transform opening hours from API format to component format
-  const transformOpeningHours = (openingHours: unknown) => {
-    // Add null/undefined check
-    if (!openingHours || typeof openingHours !== "object") {
-      return [];
-    }
-
-    const dayMapping: Record<string, string> = {
-      sunday: "Dimanche",
-      monday: "Lundi",
-      tuesday: "Mardi",
-      wednesday: "Mercredi",
-      thursday: "Jeudi",
-      friday: "Vendredi",
-      saturday: "Samedi",
-    };
-
-    return Object.entries(openingHours as Record<string, unknown>).map(
-      ([day, hours]: [string, unknown]) => {
-        const dayName = dayMapping[day];
-        let hoursText = "Fermé";
-
-        if (Array.isArray(hours) && hours.length > 0) {
-          hoursText = hours
-            .map(
-              (h: { open: string; close: string }) => `${h.open} - ${h.close}`
-            )
-            .join(", ");
-        }
-
-        return {
-          day: dayName,
-          hours: hoursText,
-        };
-      }
-    );
-  };
-
   type DeliveryPlatform = { name: string };
 
   const deliveryServices =
@@ -161,15 +119,24 @@ const RestaurantWebsite = () => {
       })
       .filter(Boolean) || [];
 
+  const fullAddress = restaurant.city
+    ? `${restaurant.address}, ${restaurant.city}`
+    : restaurant.address;
+
   return (
     <div className="min-h-screen bg-white">
-      <Navbar restaurant={restaurant} />
-      <Hero name={restaurant.name} />
+      <Hero
+        name={restaurant.name}
+        logo={restaurant.logo_url}
+        delivery_info={restaurant.delivery_info}
+        phone={restaurant.phone}
+        address={fullAddress}
+      />
       {hasMenu() && <MenuSection menu={restaurant.menu ?? []} />}
       {hasServices() && <Services services={restaurant.services ?? []} />}
-      {hasOpeningHours() && (
+      {hasOpeningHours() && restaurant.opening_hours && (
         <WorkingHours
-          openingHours={transformOpeningHours(restaurant.opening_hours)}
+          openingHours={restaurant.opening_hours}
           title={"Nos Horaires d'Ouverture"}
         />
       )}

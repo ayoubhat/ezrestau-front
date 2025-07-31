@@ -5,20 +5,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Switch } from "@/components/ui/switch";
-import { Plus, Trash2 } from "lucide-react";
+import { Form } from "@/components/ui/form";
 import { toast } from "sonner";
 import { useUser } from "@clerk/nextjs";
 import { getRestaurantByUserId } from "@/actions/get-restaurant-by-user-id";
 import { updateRestaurantByUserId } from "@/actions/update-restaurant-by-user-id";
+import WorkingHoursInput from "../_components/WorkingHoursInputs";
 
 const timeSlotSchema = z.object({
   open: z.string().regex(/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/, "Format: HH:MM"),
@@ -29,27 +21,17 @@ const daySchema = z.array(timeSlotSchema).optional();
 
 const formSchema = z.object({
   opening_hours: z.object({
-    monday: daySchema,
-    tuesday: daySchema,
-    wednesday: daySchema,
-    thursday: daySchema,
-    friday: daySchema,
-    saturday: daySchema,
-    sunday: daySchema,
+    lundi: daySchema,
+    mardi: daySchema,
+    mercredi: daySchema,
+    jeudi: daySchema,
+    vendredi: daySchema,
+    samedi: daySchema,
+    dimanche: daySchema,
   }),
 });
 
 type FormData = z.infer<typeof formSchema>;
-
-const DAYS = [
-  { key: "monday", label: "Lundi" },
-  { key: "tuesday", label: "Mardi" },
-  { key: "wednesday", label: "Mercredi" },
-  { key: "thursday", label: "Jeudi" },
-  { key: "friday", label: "Vendredi" },
-  { key: "saturday", label: "Samedi" },
-  { key: "sunday", label: "Dimanche" },
-] as const;
 
 const OpeningHoursForm = () => {
   const { user, isLoaded } = useUser();
@@ -64,25 +46,25 @@ const OpeningHoursForm = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       opening_hours: {
-        monday: [],
-        tuesday: [],
-        wednesday: [],
-        thursday: [],
-        friday: [],
-        saturday: [],
-        sunday: [],
+        lundi: [],
+        mardi: [],
+        mercredi: [],
+        jeudi: [],
+        vendredi: [],
+        samedi: [],
+        dimanche: [],
       },
     },
     values: restaurant?.opening_hours
       ? {
           opening_hours: {
-            monday: restaurant.opening_hours.monday || [],
-            tuesday: restaurant.opening_hours.tuesday || [],
-            wednesday: restaurant.opening_hours.wednesday || [],
-            thursday: restaurant.opening_hours.thursday || [],
-            friday: restaurant.opening_hours.friday || [],
-            saturday: restaurant.opening_hours.saturday || [],
-            sunday: restaurant.opening_hours.sunday || [],
+            lundi: restaurant.opening_hours.lundi || [],
+            mardi: restaurant.opening_hours.mardi || [],
+            mercredi: restaurant.opening_hours.mercredi || [],
+            jeudi: restaurant.opening_hours.jeudi || [],
+            vendredi: restaurant.opening_hours.vendredi || [],
+            samedi: restaurant.opening_hours.samedi || [],
+            dimanche: restaurant.opening_hours.dimanche || [],
           },
         }
       : undefined,
@@ -93,7 +75,6 @@ const OpeningHoursForm = () => {
       if (!user?.id) {
         throw new Error("User not authenticated");
       }
-
       return updateRestaurantByUserId(data);
     },
     onSuccess: () => {
@@ -108,44 +89,41 @@ const OpeningHoursForm = () => {
     },
   });
 
-  const toggleDay = (day: keyof FormData["opening_hours"], isOpen: boolean) => {
+  const handleToggleDay = (day: string, isOpen: boolean) => {
     if (isOpen) {
       // Set default time slots when opening
-      form.setValue(`opening_hours.${day}`, [
+      form.setValue(`opening_hours.${day}` as any, [
         { open: "11:30", close: "22:30" },
       ]);
     } else {
       // Clear time slots when closing
-      form.setValue(`opening_hours.${day}`, []);
+      form.setValue(`opening_hours.${day}` as any, []);
     }
   };
 
-  const addTimeSlot = (day: keyof FormData["opening_hours"]) => {
-    const currentSlots = form.getValues(`opening_hours.${day}`) || [];
+  const handleAddTimeSlot = (day: string) => {
+    const currentSlots = form.getValues(`opening_hours.${day}` as any) || [];
     const newSlots = [...currentSlots, { open: "09:00", close: "17:00" }];
-    form.setValue(`opening_hours.${day}`, newSlots);
+    form.setValue(`opening_hours.${day}` as any, newSlots);
   };
 
-  const removeTimeSlot = (
-    day: keyof FormData["opening_hours"],
-    index: number
-  ) => {
-    const currentSlots = form.getValues(`opening_hours.${day}`) || [];
-    const newSlots = currentSlots.filter((_, i) => i !== index);
-    form.setValue(`opening_hours.${day}`, newSlots);
+  const handleRemoveTimeSlot = (day: string, index: number) => {
+    const currentSlots = form.getValues(`opening_hours.${day}` as any) || [];
+    const newSlots = currentSlots.filter((_: any, i: number) => i !== index);
+    form.setValue(`opening_hours.${day}` as any, newSlots);
   };
 
-  const updateTimeSlot = (
-    day: keyof FormData["opening_hours"],
+  const handleUpdateTimeSlot = (
+    day: string,
     index: number,
     field: "open" | "close",
     value: string
   ) => {
-    const currentSlots = form.getValues(`opening_hours.${day}`) || [];
-    const updatedSlots = currentSlots.map((slot, i) =>
+    const currentSlots = form.getValues(`opening_hours.${day}` as any) || [];
+    const updatedSlots = currentSlots.map((slot: any, i: number) =>
       i === index ? { ...slot, [field]: value } : slot
     );
-    form.setValue(`opening_hours.${day}`, updatedSlots);
+    form.setValue(`opening_hours.${day}` as any, updatedSlots);
   };
 
   const onSubmit = (data: FormData) => {
@@ -159,205 +137,14 @@ const OpeningHoursForm = () => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-        <div className="bg-white rounded-lg border">
-          {DAYS.map(({ key, label }, index) => {
-            const daySlots = form.watch(`opening_hours.${key}`) || [];
-            const isOpen = daySlots.length > 0;
-
-            return (
-              <div
-                key={key}
-                className={`p-3 sm:p-4 ${
-                  index !== DAYS.length - 1 ? "border-b" : ""
-                }`}
-              >
-                {/* Mobile layout - stacked vertically */}
-                <div className="block sm:hidden">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="font-medium text-gray-900 text-sm">
-                      {label}
-                    </span>
-                    <FormField
-                      control={form.control}
-                      name={`opening_hours.${key}`}
-                      render={() => (
-                        <FormItem className="flex items-center gap-2">
-                          <FormControl>
-                            <Switch
-                              checked={isOpen}
-                              onCheckedChange={(checked) =>
-                                toggleDay(key, checked)
-                              }
-                            />
-                          </FormControl>
-                          {!isOpen && (
-                            <FormLabel className="text-gray-500 font-normal text-sm">
-                              Fermé
-                            </FormLabel>
-                          )}
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-
-                  {isOpen && (
-                    <div className="space-y-3">
-                      {daySlots.map((slot, slotIndex) => (
-                        <div key={slotIndex} className="space-y-2">
-                          <div className="flex items-center gap-2">
-                            <Input
-                              type="time"
-                              value={slot.open}
-                              onChange={(e) =>
-                                updateTimeSlot(
-                                  key,
-                                  slotIndex,
-                                  "open",
-                                  e.target.value
-                                )
-                              }
-                              className="flex-1 min-w-0"
-                            />
-                            <span className="text-gray-500 text-sm px-1">
-                              à
-                            </span>
-                            <Input
-                              type="time"
-                              value={slot.close}
-                              onChange={(e) =>
-                                updateTimeSlot(
-                                  key,
-                                  slotIndex,
-                                  "close",
-                                  e.target.value
-                                )
-                              }
-                              className="flex-1 min-w-0"
-                            />
-                            {daySlots.length > 1 && (
-                              <Button
-                                type="button"
-                                variant="ghost"
-                                size="sm"
-                                onClick={() => removeTimeSlot(key, slotIndex)}
-                                className="p-1 h-8 w-8 text-red-600 hover:text-red-700 hover:bg-red-50 flex-shrink-0"
-                              >
-                                <Trash2 className="h-4 w-4" />
-                              </Button>
-                            )}
-                          </div>
-                        </div>
-                      ))}
-
-                      <Button
-                        type="button"
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => addTimeSlot(key)}
-                        className="w-full text-blue-600 hover:text-blue-700 hover:bg-blue-50 text-sm"
-                      >
-                        <Plus className="h-4 w-4 mr-1" />
-                        Ajouter une plage horaire
-                      </Button>
-                    </div>
-                  )}
-                </div>
-
-                {/* Desktop layout - horizontal */}
-                <div className="hidden sm:flex items-start justify-between">
-                  <div className="flex items-center gap-4 min-w-[200px]">
-                    <span className="font-medium text-gray-900 min-w-[80px]">
-                      {label}
-                    </span>
-
-                    <FormField
-                      control={form.control}
-                      name={`opening_hours.${key}`}
-                      render={() => (
-                        <FormItem className="flex items-center gap-3">
-                          <FormControl>
-                            <Switch
-                              checked={isOpen}
-                              onCheckedChange={(checked) =>
-                                toggleDay(key, checked)
-                              }
-                            />
-                          </FormControl>
-                          <FormLabel className="text-gray-500 font-normal">
-                            {isOpen ? "" : "Fermé"}
-                          </FormLabel>
-                        </FormItem>
-                      )}
-                    />
-                  </div>
-
-                  {isOpen && (
-                    <div className="flex-1 space-y-2">
-                      {daySlots.map((slot, slotIndex) => (
-                        <div
-                          key={slotIndex}
-                          className="flex items-center gap-2"
-                        >
-                          <div className="flex items-center gap-2">
-                            <Input
-                              type="time"
-                              value={slot.open}
-                              onChange={(e) =>
-                                updateTimeSlot(
-                                  key,
-                                  slotIndex,
-                                  "open",
-                                  e.target.value
-                                )
-                              }
-                              className="w-[6.5rem]"
-                            />
-                            <span className="text-gray-500">à</span>
-                            <Input
-                              type="time"
-                              value={slot.close}
-                              onChange={(e) =>
-                                updateTimeSlot(
-                                  key,
-                                  slotIndex,
-                                  "close",
-                                  e.target.value
-                                )
-                              }
-                              className="w-[6.5rem]"
-                            />
-                          </div>
-                          {daySlots.length > 1 && (
-                            <Button
-                              type="button"
-                              variant="ghost"
-                              size="sm"
-                              onClick={() => removeTimeSlot(key, slotIndex)}
-                              className="p-1 h-8 w-8 text-red-600 hover:text-red-700 hover:bg-red-50"
-                            >
-                              <Trash2 className="h-4 w-4" />
-                            </Button>
-                          )}
-                        </div>
-                      ))}
-
-                      <Button
-                        type="button"
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => addTimeSlot(key)}
-                        className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 text-sm"
-                      >
-                        <Plus className="h-4 w-4 mr-1" />
-                        Ajouter une plage horaire
-                      </Button>
-                    </div>
-                  )}
-                </div>
-              </div>
-            );
-          })}
-        </div>
+        <WorkingHoursInput
+          type="opening"
+          openingHours={form.watch("opening_hours")}
+          onToggleDay={handleToggleDay}
+          onAddTimeSlot={handleAddTimeSlot}
+          onRemoveTimeSlot={handleRemoveTimeSlot}
+          onUpdateTimeSlot={handleUpdateTimeSlot}
+        />
 
         <Button
           type="submit"

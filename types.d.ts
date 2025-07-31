@@ -30,10 +30,20 @@ export interface DeliveryInfo {
   delivery_hours?: { [key: string]: string[] };
 }
 
-export interface OpeningHour {
+type TimeSlot = {
   open: string;
   close: string;
-}
+};
+
+type OpeningHours = {
+  lundi: TimeSlot[];
+  mardi: TimeSlot[];
+  mercredi: TimeSlot[];
+  jeudi: TimeSlot[];
+  vendredi: TimeSlot[];
+  samedi: TimeSlot[];
+  dimanche: TimeSlot[];
+};
 
 export interface LegalInfo {
   raison_sociale?: string;
@@ -59,7 +69,7 @@ export interface Restaurant {
   menu?: MenuCategory[];
   services?: string[];
   delivery_info?: DeliveryInfo;
-  opening_hours?: { [key: string]: OpeningHour[] };
+  opening_hours?: OpeningHours;
   payments_accepted?: string[];
   legal_info?: LegalInfo;
   seo_title?: string;

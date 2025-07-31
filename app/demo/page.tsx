@@ -3,9 +3,9 @@ import Delivery from "../restaurants/[subdomain]/_sections/Delivery";
 import MenuSection from "../restaurants/[subdomain]/_sections/Menu";
 import WorkingHours from "../restaurants/[subdomain]/_sections/WorkingHours";
 import Footer from "../restaurants/[subdomain]/Footer";
-import Navbar from "../restaurants/[subdomain]/Navbar";
 import { restaurant } from "../demo/demo-restaurant";
 import Hero from "../restaurants/[subdomain]/_sections/Hero";
+import NavBar from "../restaurants/[subdomain]/Navbar";
 
 const RestaurantWebsite = () => {
   // Helper functions to check if data exists
@@ -25,55 +25,12 @@ const RestaurantWebsite = () => {
     );
   };
 
-  const hasOpeningHours = () => {
-    return (
-      restaurant.opening_hours &&
-      typeof restaurant.opening_hours === "object" &&
-      Object.keys(restaurant.opening_hours).length > 0
-    );
-  };
-
   const hasDeliveryInfo = () => {
     return (
       restaurant.delivery_info?.platforms &&
       Array.isArray(restaurant.delivery_info.platforms) &&
       restaurant.delivery_info.platforms.length > 0
     );
-  };
-
-  // Transform opening hours from API format to component format
-  const transformOpeningHours = (
-    openingHours:
-      | { [key: string]: { open: string; close: string }[] }
-      | undefined
-  ) => {
-    if (!openingHours || typeof openingHours !== "object") {
-      return [];
-    }
-
-    const dayMapping: Record<string, string> = {
-      sunday: "Dimanche",
-      monday: "Lundi",
-      tuesday: "Mardi",
-      wednesday: "Mercredi",
-      thursday: "Jeudi",
-      friday: "Vendredi",
-      saturday: "Samedi",
-    };
-
-    return Object.entries(openingHours).map(([day, hours]) => {
-      const dayName = dayMapping[day];
-      let hoursText = "Fermé";
-
-      if (Array.isArray(hours) && hours.length > 0) {
-        hoursText = hours.map((h) => `${h.open} - ${h.close}`).join(", ");
-      }
-
-      return {
-        day: dayName,
-        hours: hoursText,
-      };
-    });
   };
 
   const deliveryServices =
@@ -88,15 +45,24 @@ const RestaurantWebsite = () => {
       })
       .filter(Boolean) || [];
 
+  const fullAddress = restaurant.city
+    ? `${restaurant.address}, ${restaurant.city}`
+    : restaurant.address;
+
   return (
-    <div className="flex flex-col gap-4 min-h-screen bg-white">
-      <Navbar restaurant={restaurant} />
-      <Hero name={restaurant.name} />
+    <div className="relative flex flex-col gap-4 min-h-screen bg-white">
+      <Hero
+        name={restaurant.name}
+        logo={restaurant.logo_url}
+        delivery_info={restaurant.delivery_info}
+        phone={restaurant.phone}
+        address={fullAddress}
+      />
       {hasMenu() && <MenuSection menu={restaurant.menu ?? []} />}
       {hasServices() && <Services services={restaurant.services ?? []} />}
-      {hasOpeningHours() && (
+      {restaurant.opening_hours && (
         <WorkingHours
-          openingHours={transformOpeningHours(restaurant.opening_hours)}
+          openingHours={restaurant.opening_hours}
           title={"Nos Horaires d'Ouverture"}
         />
       )}

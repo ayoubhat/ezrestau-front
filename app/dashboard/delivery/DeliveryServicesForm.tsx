@@ -24,6 +24,7 @@ import { SiDeliveroo } from "react-icons/si";
 import { useUser } from "@clerk/nextjs";
 import { getRestaurantByUserId } from "@/actions/get-restaurant-by-user-id";
 import { updateRestaurantByUserId } from "@/actions/update-restaurant-by-user-id";
+import WorkingHoursInput from "../_components/WorkingHoursInputs";
 
 const platformSchema = z.object({
   name: z.string(),
@@ -62,19 +63,8 @@ const availablePlatforms = [
   },
 ];
 
-const DAYS = [
-  { key: "monday", label: "Lundi" },
-  { key: "tuesday", label: "Mardi" },
-  { key: "wednesday", label: "Mercredi" },
-  { key: "thursday", label: "Jeudi" },
-  { key: "friday", label: "Vendredi" },
-  { key: "saturday", label: "Samedi" },
-  { key: "sunday", label: "Dimanche" },
-] as const;
-
 const DeliveryServicesForm = () => {
   const { user, isLoaded } = useUser();
-
   const queryClient = useQueryClient();
   const { data: restaurant, isLoading } = useQuery({
     queryKey: ["restaurant", "user", user?.id],
@@ -99,14 +89,12 @@ const DeliveryServicesForm = () => {
     const platforms =
       deliveryInfo.platforms?.map((platform: unknown) => {
         if (typeof platform === "string") {
-          // Handle case where platform is just a string
           return { name: platform, url: "" };
         } else if (
           typeof platform === "object" &&
           platform !== null &&
           "name" in platform
         ) {
-          // Handle case where platform is an object with name and url
           return {
             name: (platform as { name: string; url?: string }).name,
             url: (platform as { name: string; url?: string }).url || "",
@@ -241,14 +229,8 @@ const DeliveryServicesForm = () => {
     return slots.map((slot) => `${slot.open}-${slot.close}`);
   };
 
-  const parseTimeSlots = (timeStrings: string[]) => {
-    return timeStrings.map((timeString) => {
-      const [open, close] = timeString.split("-");
-      return { open, close };
-    });
-  };
-
-  const toggleDay = (day: string, isOpen: boolean) => {
+  // Working hours handlers for the reusable component
+  const handleToggleDay = (day: string, isOpen: boolean) => {
     const currentHours = form.getValues("delivery_hours") || {};
     if (isOpen) {
       form.setValue(`delivery_hours.${day}`, ["11:30-22:30"]);
@@ -260,7 +242,7 @@ const DeliveryServicesForm = () => {
     }
   };
 
-  const addTimeSlot = (day: string) => {
+  const handleAddTimeSlot = (day: string) => {
     const currentHours = form.getValues("delivery_hours") || {};
     const currentSlots = Array.isArray(currentHours[day])
       ? currentHours[day]
@@ -269,7 +251,7 @@ const DeliveryServicesForm = () => {
     form.setValue(`delivery_hours.${day}`, newSlots);
   };
 
-  const removeTimeSlot = (day: string, index: number) => {
+  const handleRemoveTimeSlot = (day: string, index: number) => {
     const currentHours = form.getValues("delivery_hours") || {};
     const currentSlots = Array.isArray(currentHours[day])
       ? currentHours[day]
@@ -286,7 +268,7 @@ const DeliveryServicesForm = () => {
     }
   };
 
-  const updateTimeSlot = (
+  const handleUpdateTimeSlot = (
     day: string,
     index: number,
     field: "open" | "close",
@@ -294,6 +276,15 @@ const DeliveryServicesForm = () => {
   ) => {
     const currentHours = form.getValues("delivery_hours") || {};
     const currentSlots = currentHours[day] || [];
+
+    // Parse current slots from string format to object format
+    const parseTimeSlots = (timeStrings: string[]) => {
+      return timeStrings.map((timeString) => {
+        const [open, close] = timeString.split("-");
+        return { open, close };
+      });
+    };
+
     const parsedSlots = parseTimeSlots(
       Array.isArray(currentSlots) ? currentSlots : []
     );
@@ -477,112 +468,20 @@ const DeliveryServicesForm = () => {
 
         {/* Custom Delivery Hours */}
         {!useRestaurantHours && (
-          <div className="bg-white rounded-lg border">
-            <div className="p-4 border-b">
+          <div>
+            <div className="mb-4">
               <h3 className="font-semibold text-gray-900">
                 Horaires de livraison personnalisés
               </h3>
             </div>
-            {DAYS.map(({ key, label }, index) => {
-              const deliveryHours = form.watch("delivery_hours") || {};
-              const daySlots = Array.isArray(deliveryHours[key])
-                ? deliveryHours[key]
-                : [];
-              const isOpen = daySlots.length > 0;
-              const parsedSlots = parseTimeSlots(daySlots);
-
-              return (
-                <div
-                  key={key}
-                  className={`p-4 ${
-                    index !== DAYS.length - 1 ? "border-b" : ""
-                  }`}
-                >
-                  <div className="flex items-start justify-between">
-                    <div className="flex items-center gap-4 min-w-[200px]">
-                      <span className="font-medium text-gray-900 min-w-[80px]">
-                        {label}
-                      </span>
-
-                      <div className="flex items-center gap-3">
-                        <Switch
-                          checked={isOpen}
-                          onCheckedChange={(checked) => toggleDay(key, checked)}
-                        />
-                        {!isOpen && (
-                          <span className="text-gray-500 font-normal">
-                            Fermé
-                          </span>
-                        )}
-                      </div>
-                    </div>
-
-                    {isOpen && (
-                      <div className="flex-1 space-y-2">
-                        {parsedSlots.map((slot, slotIndex) => (
-                          <div
-                            key={slotIndex}
-                            className="flex items-center gap-2"
-                          >
-                            <div className="flex items-center gap-2">
-                              <Input
-                                type="time"
-                                value={slot.open}
-                                onChange={(e) =>
-                                  updateTimeSlot(
-                                    key,
-                                    slotIndex,
-                                    "open",
-                                    e.target.value
-                                  )
-                                }
-                                className="w-[6.5rem]"
-                              />
-                              <span className="text-gray-500">à</span>
-                              <Input
-                                type="time"
-                                value={slot.close}
-                                onChange={(e) =>
-                                  updateTimeSlot(
-                                    key,
-                                    slotIndex,
-                                    "close",
-                                    e.target.value
-                                  )
-                                }
-                                className="w-[6.5rem]"
-                              />
-                            </div>
-                            {parsedSlots.length > 1 && (
-                              <Button
-                                type="button"
-                                variant="ghost"
-                                size="sm"
-                                onClick={() => removeTimeSlot(key, slotIndex)}
-                                className="p-1 h-8 w-8 text-red-600 hover:text-red-700 hover:bg-red-50"
-                              >
-                                <Trash2 className="h-4 w-4" />
-                              </Button>
-                            )}
-                          </div>
-                        ))}
-
-                        <Button
-                          type="button"
-                          variant="ghost"
-                          size="sm"
-                          onClick={() => addTimeSlot(key)}
-                          className="text-blue-600 hover:text-blue-700 hover:bg-blue-50 text-sm"
-                        >
-                          <Plus className="h-4 w-4 mr-1" />
-                          Ajouter une plage horaire
-                        </Button>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
+            <WorkingHoursInput
+              type="delivery"
+              deliveryHours={form.watch("delivery_hours")}
+              onToggleDay={handleToggleDay}
+              onAddTimeSlot={handleAddTimeSlot}
+              onRemoveTimeSlot={handleRemoveTimeSlot}
+              onUpdateTimeSlot={handleUpdateTimeSlot}
+            />
           </div>
         )}
 
