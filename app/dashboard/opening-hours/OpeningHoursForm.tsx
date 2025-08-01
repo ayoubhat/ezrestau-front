@@ -32,6 +32,7 @@ const formSchema = z.object({
 });
 
 type FormData = z.infer<typeof formSchema>;
+type DayKey = keyof FormData["opening_hours"];
 
 const OpeningHoursForm = () => {
   const { user, isLoaded } = useUser();
@@ -90,27 +91,30 @@ const OpeningHoursForm = () => {
   });
 
   const handleToggleDay = (day: string, isOpen: boolean) => {
+    const dayKey = day as DayKey;
     if (isOpen) {
       // Set default time slots when opening
-      form.setValue(`opening_hours.${day}` as any, [
+      form.setValue(`opening_hours.${dayKey}`, [
         { open: "11:30", close: "22:30" },
       ]);
     } else {
       // Clear time slots when closing
-      form.setValue(`opening_hours.${day}` as any, []);
+      form.setValue(`opening_hours.${dayKey}`, []);
     }
   };
 
   const handleAddTimeSlot = (day: string) => {
-    const currentSlots = form.getValues(`opening_hours.${day}` as any) || [];
+    const dayKey = day as DayKey;
+    const currentSlots = form.getValues(`opening_hours.${dayKey}`) || [];
     const newSlots = [...currentSlots, { open: "09:00", close: "17:00" }];
-    form.setValue(`opening_hours.${day}` as any, newSlots);
+    form.setValue(`opening_hours.${dayKey}`, newSlots);
   };
 
   const handleRemoveTimeSlot = (day: string, index: number) => {
-    const currentSlots = form.getValues(`opening_hours.${day}` as any) || [];
-    const newSlots = currentSlots.filter((_: any, i: number) => i !== index);
-    form.setValue(`opening_hours.${day}` as any, newSlots);
+    const dayKey = day as DayKey;
+    const currentSlots = form.getValues(`opening_hours.${dayKey}`) || [];
+    const newSlots = currentSlots.filter((_, i: number) => i !== index);
+    form.setValue(`opening_hours.${dayKey}`, newSlots);
   };
 
   const handleUpdateTimeSlot = (
@@ -119,11 +123,12 @@ const OpeningHoursForm = () => {
     field: "open" | "close",
     value: string
   ) => {
-    const currentSlots = form.getValues(`opening_hours.${day}` as any) || [];
-    const updatedSlots = currentSlots.map((slot: any, i: number) =>
+    const dayKey = day as DayKey;
+    const currentSlots = form.getValues(`opening_hours.${dayKey}`) || [];
+    const updatedSlots = currentSlots.map((slot, i: number) =>
       i === index ? { ...slot, [field]: value } : slot
     );
-    form.setValue(`opening_hours.${day}` as any, updatedSlots);
+    form.setValue(`opening_hours.${dayKey}`, updatedSlots);
   };
 
   const onSubmit = (data: FormData) => {
