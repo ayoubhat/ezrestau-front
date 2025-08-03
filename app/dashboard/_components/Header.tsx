@@ -9,6 +9,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { rootDomain } from "@/lib/utils";
 import { SignedIn, UserButton, useUser } from "@clerk/nextjs";
 import { useQuery } from "@tanstack/react-query";
 import { Eye } from "lucide-react";
@@ -36,7 +37,7 @@ const Header = () => {
         <Tooltip>
           <TooltipTrigger asChild>
             <Link
-              href={`/restaurants/${restaurant?.subdomain}`}
+              href={`https://${restaurant?.subdomain}.${rootDomain}`}
               target="_blank"
             >
               <Button
