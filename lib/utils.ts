@@ -3,7 +3,7 @@ import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 export const rootDomain =
-  process.env.NODE_ENV === "production" ? "ezrestau.dev" : "localhost:3000";
+  process.env.NODE_ENV === "production" ? "ezrestau.fr" : "localhost:3000";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
