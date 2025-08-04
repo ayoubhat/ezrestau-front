@@ -1,5 +1,6 @@
 import PageHeader from "../_components/PageHeader";
 import LocationForm from "./LocationForm";
+import SearchPlace from "./SearchPalce";
 
 const LocationPage = () => {
   return (
@@ -9,6 +10,7 @@ const LocationPage = () => {
         description="Configurez l'adresse de votre établissement"
       />
       <LocationForm />
+      <SearchPlace />
     </div>
   );
 };

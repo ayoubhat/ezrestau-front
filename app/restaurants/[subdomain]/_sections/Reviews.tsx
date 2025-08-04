@@ -1,78 +1,90 @@
+import GoogleReviewsCarousel from "@/app/dashboard/_components/GoogleReviewsCarousel";
+import { GoogleReview, GooglePlace } from "@/types";
 import { Star } from "lucide-react";
 import React from "react";
+import SectionLayout from "../Section";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import Link from "next/link";
 
-interface Review {
-  id: number;
-  name: string;
-  rating: number;
-  comment: string;
-  date: string;
+interface ReviewsProps {
+  googlePlace?: GooglePlace | null;
+  googleReviews?: GoogleReview[];
 }
 
-const Reviews = () => {
-  const reviews: Review[] = [
-    {
-      id: 1,
-      name: "Marie Dubois",
-      rating: 5,
-      comment:
-        "Excellent restaurant ! La pizza était délicieuse et le service impeccable. Je recommande vivement !",
-      date: "Il y a 2 semaines",
-    },
-    {
-      id: 2,
-      name: "Pierre Martin",
-      rating: 4,
-      comment:
-        "Très bon rapport qualité-prix. Les sandwichs sont généreux et les ingrédients de qualité.",
-      date: "Il y a 1 mois",
-    },
-    {
-      id: 3,
-      name: "Sophie Leroy",
-      rating: 5,
-      comment:
-        "Livraison rapide et plats toujours chauds. Mon restaurant préféré pour commander !",
-      date: "Il y a 3 semaines",
-    },
-  ];
-  return (
-    <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Avis Google
-          </h2>
-          <p className="text-xl text-gray-600">
-            Ce que nos clients disent de nous
-          </p>
-        </div>
+const Reviews = ({ googlePlace, googleReviews = [] }: ReviewsProps) => {
+  const renderStars = (rating: number) => {
+    return (
+      <div className="flex items-center gap-0.5">
+        {[...Array(5)].map((_, index) => (
+          <Star
+            key={index}
+            className={`w-4 h-4 ${
+              index < Math.floor(rating)
+                ? "text-yellow-400 fill-yellow-400"
+                : index < rating
+                ? "text-yellow-400 fill-yellow-200"
+                : "text-gray-300"
+            }`}
+          />
+        ))}
+      </div>
+    );
+  };
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {reviews.map((review) => (
-            <div key={review.id} className="bg-gray-50 p-6 rounded-lg">
-              <div className="flex items-center mb-4">
-                <div className="flex text-yellow-400">
-                  {[...Array(5)].map((_, i) => (
-                    <Star
-                      key={i}
-                      className={`w-5 h-5 ${
-                        i < review.rating ? "fill-current" : ""
-                      }`}
-                    />
-                  ))}
-                </div>
-                <span className="ml-2 text-sm text-gray-600">
-                  {review.date}
+  return (
+    <SectionLayout title="Avis Google">
+      <div className="space-y-4 mt-[-1rem]">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex items-center gap-3">
+            <div className="bg-white rounded-full p-3 shadow-sm">
+              <Image
+                src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
+                alt="Google"
+                className="w-6 h-6"
+                width={24}
+                height={24}
+              />
+            </div>
+            <div className="text-center sm:text-left">
+              <div className="flex items-center justify-center sm:justify-start gap-2 mb-1">
+                {renderStars(googlePlace?.rating || 1)}
+                <span className="text-2xl font-bold text-gray-900">
+                  {googlePlace?.rating}
                 </span>
               </div>
-              <p className="text-gray-700 mb-4">{review.comment}</p>
-              <p className="font-semibold text-gray-900">{review.name}</p>
+              <p className="text-sm text-gray-600">
+                {googlePlace?.user_ratings_total} avis disponibles
+              </p>
             </div>
-          ))}
+          </div>
+        </div>
+
+        <GoogleReviewsCarousel reviews={googleReviews} />
+
+        <div className="flex flex-row justify-center gap-4">
+          <Button asChild>
+            <Link
+              href={`https://search.google.com/local/writereview?placeid=${googlePlace?.place_id}`}
+              className="flex items-center gap-2"
+              target="_blank"
+            >
+              Laisser un avis
+            </Link>
+          </Button>
+
+          <Button variant="outline" asChild>
+            <Link
+              href={`https://www.google.com/maps/place/?q=place_id:${googlePlace?.place_id}`}
+              target="_blank"
+              className="flex items-center gap-2"
+            >
+              Voir tous les avis
+            </Link>
+          </Button>
         </div>
       </div>
-    </section>
+    </SectionLayout>
   );
 };
 

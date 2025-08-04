@@ -18,6 +18,91 @@ export const restaurant: Restaurant = {
     tiktok: "https://tiktok.com/@burgerstreet",
     twitter: "https://twitter.com/burgerstreet",
   },
+  // Google Place Data
+  google_place: {
+    place_id: "ChIJdemo_burger_street_paris_123456",
+    name: "Burger Street",
+    formatted_address: "12 Rue de la Street Food, 75001 Paris, France",
+    rating: 4.6,
+    user_ratings_total: 158,
+    geometry: {
+      location: {
+        lat: 48.8566,
+        lng: 2.3522,
+      },
+    },
+    types: ["restaurant", "food", "establishment", "point_of_interest"],
+  },
+  // Google Reviews Data
+  google_reviews: [
+    {
+      author_name: "Marie Dubois",
+      profile_photo_url: "https://lh3.googleusercontent.com/a-/ALV-UjXYZ123abc",
+      rating: 5,
+      relative_time_description: "il y a 2 semaines",
+      text: "Burger Street est devenu mon fast-food préféré ! Les burgers sont délicieux avec des ingrédients frais. Le Double Cheese Burger est un délice. Service rapide et personnel sympa. Je recommande vivement !",
+    },
+    {
+      author_name: "Pierre Martin",
+      profile_photo_url: "https://lh3.googleusercontent.com/a-/ALV-UjWXY456def",
+      rating: 4,
+      relative_time_description: "il y a 1 mois",
+      text: "Excellente découverte ! Les pizzas sont surprenantes pour un fast-food, pâte fine et garniture généreuse. Les tacos sont savoureux aussi. Seul bémol : un peu d'attente en heure de pointe mais ça vaut le coup.",
+    },
+    {
+      author_name: "Sophie Leroy",
+      rating: 5,
+      relative_time_description: "il y a 3 jours",
+      text: "Commande livrée rapidement via leur service. Le Chicken Burger était parfait, bien chaud et croustillant. Les frites maison sont excellentes. Prix très corrects pour la qualité. Je recommande !",
+    },
+    {
+      author_name: "Jean-Luc Bernard",
+      profile_photo_url: "https://lh3.googleusercontent.com/a-/ALV-UjVWX789ghi",
+      rating: 3,
+      relative_time_description: "il y a 2 mois",
+      text: "Nourriture correcte sans plus. Les burgers sont bons mais pas exceptionnels. Le Fish Burger manquait un peu de sauce. Service efficace. Rapport qualité-prix honnête pour le quartier.",
+    },
+    {
+      author_name: "Camille Moreau",
+      profile_photo_url: "https://lh3.googleusercontent.com/a-/ALV-UjUVW012jkl",
+      rating: 5,
+      relative_time_description: "il y a 1 semaine",
+      text: "Parfait pour un déjeuner rapide ! Le Mexican Burger avec les jalapeños était top. L'équipe est accueillante et l'ambiance décontractée. Les desserts maison sont un plus. À refaire !",
+    },
+    {
+      author_name: "Thomas Petit",
+      profile_photo_url: "https://lh3.googleusercontent.com/a-/ALV-UjTSR345mno",
+      rating: 4,
+      relative_time_description: "il y a 5 jours",
+      text: "Très bon fast-food avec un concept sympa. Le Chèvre Miel Burger est original et délicieux. Les wraps sont copieux. Personnel souriant. Juste un peu cher mais la qualité est au rendez-vous.",
+    },
+    {
+      author_name: "Isabelle Roux",
+      rating: 5,
+      relative_time_description: "il y a 1 semaine",
+      text: "Une adresse à retenir dans le 1er ! Les salades sont fraîches et bien garnies. La Salade César avec le poulet grillé était parfaite. Service efficace même aux heures de rush. Bravo !",
+    },
+    {
+      author_name: "David Chen",
+      profile_photo_url: "https://lh3.googleusercontent.com/a-/ALV-UjQPO678pqr",
+      rating: 4,
+      relative_time_description: "il y a 3 semaines",
+      text: "Bonne expérience chez Burger Street. Le Big Bacon était généreux et savoureux. Les pizzas sont une belle surprise. Livraison rapide. Seul point négatif : les boissons un peu chères.",
+    },
+    {
+      author_name: "Lucie Fontaine",
+      profile_photo_url: "https://lh3.googleusercontent.com/a-/ALV-UjMNO901stu",
+      rating: 5,
+      relative_time_description: "il y a 4 jours",
+      text: "Excellent ! J'ai testé les tacos et ils sont vraiment bons, bien épicés comme j'aime. Le brownie chocolat en dessert était un délice. Personnel aux petits soins. Je reviendrai c'est sûr !",
+    },
+    {
+      author_name: "Antoine Moreau",
+      rating: 4,
+      relative_time_description: "il y a 2 semaines",
+      text: "Burger Street propose une belle variété. Les wraps sont copieux et savoureux. Le Wrap Saumon Fumé était excellent. Ambiance décontractée parfaite pour un repas entre amis. Bon rapport qualité-prix.",
+    },
+  ],
   menu: [
     {
       category: "Nos burgers",
@@ -394,5 +479,5 @@ export const restaurant: Restaurant = {
   seo_description:
     "Découvrez Burger Street, le fast food tendance de Paris. Burgers gourmets, pizzas artisanales, tacos savoureux et bien plus. Livraison rapide.",
   created_at: "2025-01-15T10:30:00Z",
-  updated_at: "2025-07-28T20:15:45Z",
+  updated_at: "2025-08-04T14:43:02Z",
 };

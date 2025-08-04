@@ -51,6 +51,29 @@ export interface LegalInfo {
   siret?: string;
 }
 
+export interface GoogleReview {
+  author_name: string;
+  profile_photo_url?: string;
+  rating: number;
+  relative_time_description: string;
+  text: string;
+}
+
+export interface GooglePlace {
+  place_id: string;
+  name: string;
+  formatted_address: string;
+  rating?: number;
+  user_ratings_total?: number;
+  geometry?: {
+    location: {
+      lat: number;
+      lng: number;
+    };
+  };
+  types: string[];
+}
+
 export interface Restaurant {
   _id?: string;
   owner_id: string;
@@ -74,6 +97,8 @@ export interface Restaurant {
   legal_info?: LegalInfo;
   seo_title?: string;
   seo_description?: string;
+  google_place?: GooglePlace;
+  google_reviews?: GoogleReview[];
   created_at?: string;
   updated_at?: string;
 }

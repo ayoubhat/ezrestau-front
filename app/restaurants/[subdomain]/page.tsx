@@ -9,6 +9,7 @@ import { getRestaurantBySubdomain } from "@/actions/get-restaurant-by-subdomain"
 import { useQuery } from "@tanstack/react-query";
 import Footer from "./Footer";
 import Hero from "./_sections/Hero";
+import Reviews from "./_sections/Reviews";
 
 // Minimalist Loading Component
 const LoadingScreen = () => {
@@ -81,30 +82,6 @@ const RestaurantWebsite = () => {
     );
   };
 
-  const hasServices = () => {
-    return (
-      restaurant.services &&
-      Array.isArray(restaurant.services) &&
-      restaurant.services.length > 0
-    );
-  };
-
-  const hasOpeningHours = () => {
-    return (
-      restaurant.opening_hours &&
-      typeof restaurant.opening_hours === "object" &&
-      Object.keys(restaurant.opening_hours).length > 0
-    );
-  };
-
-  const hasDeliveryInfo = () => {
-    return (
-      restaurant.delivery_info?.platforms &&
-      Array.isArray(restaurant.delivery_info.platforms) &&
-      restaurant.delivery_info.platforms.length > 0
-    );
-  };
-
   type DeliveryPlatform = { name: string };
 
   const deliveryServices =
@@ -132,15 +109,33 @@ const RestaurantWebsite = () => {
         phone={restaurant.phone}
         address={fullAddress}
       />
-      {hasMenu() && <MenuSection menu={restaurant.menu ?? []} />}
-      {hasServices() && <Services services={restaurant.services ?? []} />}
-      {hasOpeningHours() && restaurant.opening_hours && (
+      
+      {restaurant.menu && restaurant.menu.length > 0 && (
+        <MenuSection menu={restaurant.menu} />
+      )}
+
+      {restaurant.services && restaurant.services.length > 0 && (
+        <Services services={restaurant.services} />
+      )}
+
+      {restaurant.opening_hours && (
         <WorkingHours
           openingHours={restaurant.opening_hours}
           title={"Nos Horaires d'Ouverture"}
         />
       )}
-      {hasDeliveryInfo() && <Delivery services={deliveryServices} />}
+
+      {restaurant.delivery_info?.platforms && (
+        <Delivery services={deliveryServices} />
+      )}
+
+      {restaurant.google_place && restaurant.google_reviews && (
+        <Reviews
+          googlePlace={restaurant.google_place}
+          googleReviews={restaurant.google_reviews}
+        />
+      )}
+
       <Footer restaurant={restaurant} />
     </div>
   );

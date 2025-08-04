@@ -115,7 +115,7 @@ const MenuManagement = () => {
         </p>
       </TipCard>
 
-      <div className="flex justify-between gap-2 flex-wrap-reverse sm:flex-nowrap md:gap-2 felx-wrap">
+      <div className="flex justify-between gap-2 flex-wrap-reverse md:flex-nowrap md:gap-2">
         <div className="relative w-full">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
           <Input
@@ -125,7 +125,7 @@ const MenuManagement = () => {
             className="pl-10"
           />
         </div>
-        <div className="flex flex-wrap md:flex-nowrap gap-2">
+        <div className="flex w-full md:w-fit flex-wrap md:flex-nowrap gap-2">
           <CategoryModal />
           <MenuItemModal categories={categories} />
         </div>

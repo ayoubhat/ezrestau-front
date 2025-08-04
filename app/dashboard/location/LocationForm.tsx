@@ -37,6 +37,7 @@ type FormData = z.infer<typeof formSchema>;
 const LocationForm = () => {
   const { user, isLoaded } = useUser();
   const queryClient = useQueryClient();
+
   const { data: restaurant, isLoading } = useQuery({
     queryKey: ["restaurant", "user", user?.id],
     queryFn: () => getRestaurantByUserId(user!.id),
@@ -71,7 +72,16 @@ const LocationForm = () => {
         throw new Error("User not authenticated");
       }
 
-      return updateRestaurantByUserId(data);
+      const cleanedData = {
+        address: data.address,
+        postal_code: data.postal_code,
+        city: data.city,
+        latitude: data.latitude,
+        longitude: data.longitude,
+        google_maps_link: data.google_maps_link || undefined,
+      };
+
+      return updateRestaurantByUserId(cleanedData);
     },
     onSuccess: () => {
       toast.success("Informations de localisation mises à jour avec succès!");
@@ -86,16 +96,7 @@ const LocationForm = () => {
   });
 
   const onSubmit = (data: FormData) => {
-    const cleanedData = {
-      address: data.address,
-      postal_code: data.postal_code,
-      city: data.city,
-      latitude: data.latitude,
-      longitude: data.longitude,
-      google_maps_link: data.google_maps_link || undefined,
-    };
-
-    mutation.mutate(cleanedData);
+    mutation.mutate(data);
   };
 
   if (isLoading || !isLoaded) {
@@ -148,95 +149,6 @@ const LocationForm = () => {
             )}
           />
         </div>
-
-        {/* Coordinates Section */}
-        {/* <div className="space-y-4">
-          <h3 className="text-lg font-medium">Coordonnées GPS (optionnel)</h3>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <FormField
-              control={form.control}
-              name="latitude"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="flex items-center gap-2">
-                    <Navigation className="h-4 w-4" />
-                    Latitude
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      type="number"
-                      step="any"
-                      placeholder="48.8566"
-                      {...field}
-                      onChange={(e) => {
-                        const value = e.target.value;
-                        field.onChange(
-                          value === "" ? undefined : parseFloat(value)
-                        );
-                      }}
-                      value={field.value ?? ""}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-
-            <FormField
-              control={form.control}
-              name="longitude"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="flex items-center gap-2">
-                    <Navigation className="h-4 w-4" />
-                    Longitude
-                  </FormLabel>
-                  <FormControl>
-                    <Input
-                      type="number"
-                      step="any"
-                      placeholder="2.3522"
-                      {...field}
-                      onChange={(e) => {
-                        const value = e.target.value;
-                        field.onChange(
-                          value === "" ? undefined : parseFloat(value)
-                        );
-                      }}
-                      value={field.value ?? ""}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          </div>
-        </div> */}
-
-        {/* <div className="space-y-4">
-          <h3 className="text-lg font-medium">Lien Google Maps (optionnel)</h3>
-
-          <FormField
-            control={form.control}
-            name="google_maps_link"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className="flex items-center gap-2">
-                  <Map className="h-4 w-4 text-blue-600" />
-                  Lien Google Maps
-                </FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="https://maps.google.com/..."
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-        </div> */}
 
         <Button type="submit" disabled={mutation.isPending}>
           {mutation.isPending ? "Enregistrement..." : "Enregistrer"}

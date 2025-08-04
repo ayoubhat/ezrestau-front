@@ -103,7 +103,7 @@ export const calculateProgress = (restaurant: Restaurant): ProgressResult => {
         restaurant.opening_hours &&
         Object.keys(restaurant.opening_hours).length > 0
       ),
-      path: "/dashboard/horaires",
+      path: "/dashboard/opening-hours",
     },
     {
       key: "menu",
@@ -158,6 +158,14 @@ export const calculateProgress = (restaurant: Restaurant): ProgressResult => {
         restaurant.delivery_info.platforms.length > 0
       ),
       path: "/dashboard/delivery",
+    },
+    {
+      key: "google_reviews",
+      name: "Avis Google",
+      completed: !!(
+        restaurant.google_reviews && restaurant.google_reviews.length > 0
+      ),
+      path: "/dashboard/google-reviews",
     },
   ];
 

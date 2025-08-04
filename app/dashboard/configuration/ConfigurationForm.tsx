@@ -175,6 +175,8 @@ const ConfigurationForm = () => {
                       <Image
                         src={logoPreview ?? restaurant?.logo_url ?? undefined}
                         alt="Logo preview"
+                        width={128}
+                        height={128}
                         className="w-32 h-32 object-cover rounded-lg border cursor-pointer hover:opacity-80 transition-opacity"
                         onClick={triggerFileInput}
                         title="Cliquez pour changer le logo"

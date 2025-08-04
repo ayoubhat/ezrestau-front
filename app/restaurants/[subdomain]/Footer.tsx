@@ -37,7 +37,7 @@ const Footer = ({ restaurant }: { restaurant: Restaurant }) => {
   const paymentMethods = restaurant.payments_accepted || [];
   const socialLinks = restaurant.social_links
     ? Object.entries(restaurant.social_links)
-        .filter(([value]) => value)
+        .filter(([platform, url]) => url && url.trim() !== "") // Fixed: check if URL is not empty
         .map(([platform, url]) => ({
           name: platform,
           url: url as string,

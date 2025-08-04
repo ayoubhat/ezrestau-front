@@ -23,6 +23,7 @@ import {
   LayoutDashboard,
   Settings,
   ChefHat,
+  ThumbsUp,
 } from "lucide-react";
 import { MdDeliveryDining } from "react-icons/md";
 import { IoSearchSharp } from "react-icons/io5";
@@ -85,6 +86,11 @@ const items = [
     name: "SEO",
     url: "/dashboard/seo",
     icon: IoSearchSharp,
+  },
+  {
+    name: "Avis Google",
+    url: "/dashboard/google-reviews",
+    icon: ThumbsUp,
   },
 ];
 

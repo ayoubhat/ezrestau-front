@@ -5,33 +5,9 @@ import WorkingHours from "../restaurants/[subdomain]/_sections/WorkingHours";
 import Footer from "../restaurants/[subdomain]/Footer";
 import { restaurant } from "../demo/demo-restaurant";
 import Hero from "../restaurants/[subdomain]/_sections/Hero";
+import Reviews from "../restaurants/[subdomain]/_sections/Reviews";
 
 const RestaurantWebsite = () => {
-  // Helper functions to check if data exists
-  const hasMenu = () => {
-    return (
-      restaurant.menu &&
-      Array.isArray(restaurant.menu) &&
-      restaurant.menu.length > 0
-    );
-  };
-
-  const hasServices = () => {
-    return (
-      restaurant.services &&
-      Array.isArray(restaurant.services) &&
-      restaurant.services.length > 0
-    );
-  };
-
-  const hasDeliveryInfo = () => {
-    return (
-      restaurant.delivery_info?.platforms &&
-      Array.isArray(restaurant.delivery_info.platforms) &&
-      restaurant.delivery_info.platforms.length > 0
-    );
-  };
-
   const deliveryServices =
     restaurant.delivery_info?.platforms
       ?.map((platform) => {
@@ -57,15 +33,19 @@ const RestaurantWebsite = () => {
         phone={restaurant.phone}
         address={fullAddress}
       />
-      {hasMenu() && <MenuSection menu={restaurant.menu ?? []} />}
-      {hasServices() && <Services services={restaurant.services ?? []} />}
+      <MenuSection menu={restaurant.menu ?? []} />
+      <Services services={restaurant.services ?? []} />
       {restaurant.opening_hours && (
         <WorkingHours
           openingHours={restaurant.opening_hours}
           title={"Nos Horaires d'Ouverture"}
         />
       )}
-      {hasDeliveryInfo() && <Delivery services={deliveryServices} />}
+      <Delivery services={deliveryServices} />
+      <Reviews
+        googlePlace={restaurant.google_place}
+        googleReviews={restaurant.google_reviews}
+      />
       <Footer restaurant={restaurant} />
     </div>
   );
