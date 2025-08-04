@@ -34,7 +34,7 @@ const Reviews = ({ googlePlace, googleReviews = [] }: ReviewsProps) => {
 
   return (
     <SectionLayout title="Avis Google">
-      <div className="space-y-4 mt-[-1rem]">
+      <div className="space-y-4 mt-[-1rem] mb-4">
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <div className="flex items-center gap-3">
             <div className="bg-white rounded-full p-3 shadow-sm">

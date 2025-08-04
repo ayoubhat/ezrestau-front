@@ -13,7 +13,7 @@ const GoogleReviewsCarousel = ({ reviews }: { reviews: GoogleReview[] }) => {
   return (
     <div className="relative py-4 px-12">
       <Carousel>
-        <CarouselContent>
+        <CarouselContent className="ml-1 sm:ml-0">
           {reviews.map((review, index) => (
             <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 p-1">
               <ReviewCard review={review} />
