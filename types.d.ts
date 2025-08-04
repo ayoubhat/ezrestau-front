@@ -72,6 +72,7 @@ export interface GooglePlace {
     };
   };
   types: string[];
+  business_status?: string;
 }
 
 export interface Restaurant {

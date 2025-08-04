@@ -1,3 +1,4 @@
+import { GooglePlace } from "@/types";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
@@ -27,10 +28,10 @@ export async function GET(request: NextRequest) {
       // Filter for active restaurants only
       const activePlaces = data.results
         .filter(
-          (place: any) =>
+          (place: GooglePlace) =>
             place.business_status === "OPERATIONAL" || !place.business_status
         )
-        .filter((place: any) =>
+        .filter((place: GooglePlace) =>
           place.types?.some((type: string) =>
             [
               "restaurant",

@@ -1,4 +1,4 @@
-import { Info, InfoIcon } from "lucide-react";
+import { Info } from "lucide-react";
 import { Alert, AlertDescription } from "./ui/alert";
 
 const TipCard = ({ children }: { children: React.ReactNode }) => {

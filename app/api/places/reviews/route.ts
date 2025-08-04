@@ -1,12 +1,5 @@
+import { GoogleReview } from "@/types";
 import { NextRequest, NextResponse } from "next/server";
-
-export interface GoogleReview {
-  author_name: string;
-  profile_photo_url?: string;
-  rating: number;
-  relative_time_description: string;
-  text: string;
-}
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
@@ -35,14 +28,15 @@ export async function GET(request: NextRequest) {
       const place = data.result;
       const reviews = place.reviews || [];
 
-      // Format reviews according to your GoogleReview interface
-      const formattedReviews: GoogleReview[] = reviews.map((review: any) => ({
-        author_name: review.author_name,
-        profile_photo_url: review.profile_photo_url,
-        rating: review.rating,
-        relative_time_description: review.relative_time_description,
-        text: review.text,
-      }));
+      const formattedReviews: GoogleReview[] = reviews.map(
+        (review: GoogleReview) => ({
+          author_name: review.author_name,
+          profile_photo_url: review.profile_photo_url,
+          rating: review.rating,
+          relative_time_description: review.relative_time_description,
+          text: review.text,
+        })
+      );
 
       return NextResponse.json({
         success: true,
