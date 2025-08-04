@@ -11,7 +11,6 @@ import Footer from "./Footer";
 import Hero from "./_sections/Hero";
 import Reviews from "./_sections/Reviews";
 
-// Minimalist Loading Component
 const LoadingScreen = () => {
   return (
     <div className="min-h-screen bg-white flex items-center justify-center">
@@ -74,14 +73,6 @@ const RestaurantWebsite = () => {
     return <ErrorScreen onRetry={() => refetch()} />;
   }
 
-  const hasMenu = () => {
-    return (
-      restaurant.menu &&
-      Array.isArray(restaurant.menu) &&
-      restaurant.menu.length > 0
-    );
-  };
-
   type DeliveryPlatform = { name: string };
 
   const deliveryServices =
@@ -109,7 +100,7 @@ const RestaurantWebsite = () => {
         phone={restaurant.phone}
         address={fullAddress}
       />
-      
+
       {restaurant.menu && restaurant.menu.length > 0 && (
         <MenuSection menu={restaurant.menu} />
       )}

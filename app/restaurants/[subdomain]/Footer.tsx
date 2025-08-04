@@ -37,7 +37,9 @@ const Footer = ({ restaurant }: { restaurant: Restaurant }) => {
   const paymentMethods = restaurant.payments_accepted || [];
   const socialLinks = restaurant.social_links
     ? Object.entries(restaurant.social_links)
-        .filter(([platform, url]) => url && url.trim() !== "") // Fixed: check if URL is not empty
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        .filter(([platform, url]) => url && url.trim() !== "")
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         .map(([platform, url]) => ({
           name: platform,
           url: url as string,
