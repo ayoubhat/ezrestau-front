@@ -20,6 +20,8 @@ import GoogleReviewsCarousel from "../_components/GoogleReviewsCarousel";
 import { GooglePlace, GoogleReview } from "@/types";
 import { updateRestaurantByUserId } from "@/actions/update-restaurant-by-user-id";
 import { getRestaurantByUserId } from "@/actions/get-restaurant-by-user-id";
+import Image from "next/image";
+import noReviewsImg from "@/public/no-reviews.svg";
 
 const GoogleReviewsImport = () => {
   const { user } = useUser();
@@ -209,6 +211,67 @@ const GoogleReviewsImport = () => {
         <div className="flex items-center justify-center p-8">
           <div className="w-6 h-6 animate-spin rounded-full border-2 border-current border-t-transparent" />
           <span className="ml-2">Chargement...</span>
+        </div>
+      </div>
+    );
+  }
+
+  // Show message when no reviews are imported yet
+  if (!selectedPlace && importedReviews.length === 0) {
+    return (
+      <div className="space-y-4">
+        <div className="relative">
+          <div className="relative flex-1">
+            <Input
+              placeholder="Recherchez votre restaurant..."
+              value={searchQuery}
+              onChange={(e) => handleSearchInputChange(e.target.value)}
+              className="pr-10"
+              disabled={isUpdating}
+            />
+            <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+          </div>
+
+          {/* Search Results */}
+          {showSuggestions && places.length > 0 && (
+            <div className="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg max-h-60 overflow-y-auto">
+              {places.map((place) => (
+                <div
+                  key={place.place_id}
+                  className="p-3 hover:bg-gray-50 cursor-pointer border-b last:border-b-0"
+                  onClick={() => selectGooglePlace(place)}
+                >
+                  <div className="flex-1">
+                    <h4 className="font-medium">{place.name}</h4>
+                    <p className="text-sm text-gray-600 flex items-center gap-1">
+                      <MapPin className="w-3 h-3" />
+                      {place.formatted_address}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {showSuggestions &&
+            places.length === 0 &&
+            !isSearching &&
+            searchQuery && (
+              <div className="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg p-4 text-center text-gray-500">
+                <p>Aucun restaurant trouvé</p>
+                <p className="text-sm mt-1">Essayez avec le nom + la ville</p>
+              </div>
+            )}
+        </div>
+        <div className="flex flex-col justify-center items-center text-center ">
+          <Image
+            src={noReviewsImg}
+            alt="No reviews image"
+            className="w-64 mb-1"
+          />
+          <h3 className="text-md max-w-sm font-medium text-gray-900">
+            Aucun avis importé.
+          </h3>
         </div>
       </div>
     );
