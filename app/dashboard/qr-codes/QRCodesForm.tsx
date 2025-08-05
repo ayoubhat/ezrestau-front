@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, JSX } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useUser } from "@clerk/nextjs";
 import { getRestaurantByUserId } from "@/actions/get-restaurant-by-user-id";
@@ -19,7 +19,16 @@ import QRCodePreviewDialog from "./QRCodePreviewDialog";
 import Image from "next/image";
 import setupImg from "@/public/need-setup.svg";
 
-const qrCodeTypes = [
+interface QRCodeType {
+  id: string;
+  title: string;
+  description: string;
+  icon: JSX.Element;
+  urlPath: string;
+  isExternalUrl: boolean;
+}
+
+const qrCodeTypes: QRCodeType[] = [
   {
     id: "menu",
     title: "Menu",
@@ -85,7 +94,7 @@ const QRCodesForm = () => {
 
   const baseUrl = `https://${restaurant.subdomain}.ezrestau.fr`;
 
-  const getQRUrl = (type: any) => {
+  const getQRUrl = (type: QRCodeType) => {
     if (type.id === "review" && restaurant.google_place?.place_id) {
       return `https://search.google.com/local/writereview?placeid=${restaurant.google_place.place_id}`;
     }
@@ -96,7 +105,7 @@ const QRCodesForm = () => {
     return `${baseUrl}${type.urlPath}`;
   };
 
-  const handleViewClick = (type: any) => {
+  const handleViewClick = (type: QRCodeType) => {
     if (
       !checkGooglePlaceIdAndAlert(type.id, restaurant.google_place?.place_id)
     ) {
