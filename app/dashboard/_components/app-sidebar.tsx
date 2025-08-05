@@ -24,6 +24,7 @@ import {
   Settings,
   ChefHat,
   ThumbsUp,
+  QrCode,
 } from "lucide-react";
 import { MdDeliveryDining } from "react-icons/md";
 import { IoSearchSharp } from "react-icons/io5";
@@ -91,6 +92,11 @@ const items = [
     name: "Avis Google",
     url: "/dashboard/google-reviews",
     icon: ThumbsUp,
+  },
+  {
+    name: "QR Codes",
+    url: "/dashboard/qr-codes",
+    icon: QrCode,
   },
 ];
 

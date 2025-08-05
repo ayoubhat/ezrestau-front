@@ -40,7 +40,6 @@ const Features = () => {
       title: "Avis Google",
       description:
         "Importez automatiquement vos avis Google pour renforcer votre crédibilité",
-      comingSoon: true,
     },
   ];
 
@@ -62,11 +61,6 @@ const Features = () => {
               key={index}
               className="border-0 p-4 shadow-lg hover:shadow-xl transition-shadow relative"
             >
-              {feature.comingSoon && (
-                <div className="absolute top-4 right-4 bg-orange-500 text-white text-xs px-2 py-1 rounded-full font-medium">
-                  Bientôt disponible
-                </div>
-              )}
               <CardHeader>
                 <div className="w-16 h-16 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 mb-4">
                   {feature.icon}

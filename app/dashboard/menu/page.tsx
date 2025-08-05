@@ -179,6 +179,8 @@ const MenuManagement = () => {
                                 <Image
                                   src={item.image_url}
                                   alt={item.name}
+                                  width={64}
+                                  height={64}
                                   className="w-full h-full object-cover rounded-lg"
                                 />
                               ) : (

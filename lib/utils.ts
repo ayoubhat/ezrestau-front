@@ -1,5 +1,6 @@
 import { Restaurant } from "@/types";
 import { clsx, type ClassValue } from "clsx";
+import { toast } from "sonner";
 import { twMerge } from "tailwind-merge";
 
 export const rootDomain =
@@ -41,6 +42,53 @@ export const formatSiret = (value: string) => {
       6
     )} ${limitedDigits.slice(6, 9)} ${limitedDigits.slice(9)}`;
   }
+};
+
+export const downloadQRCode = (
+  typeId: string,
+  qrRefs: React.MutableRefObject<{ [key: string]: HTMLDivElement | null }>,
+  isHD: boolean = false,
+  suffix: string = ""
+) => {
+  const refKey = suffix ? `${typeId}${suffix}` : typeId;
+  const qrContainer = qrRefs.current[refKey];
+  if (!qrContainer) return;
+
+  const svg = qrContainer.querySelector("svg");
+  if (!svg) return;
+
+  const serializer = new XMLSerializer();
+  const source = serializer.serializeToString(svg);
+
+  // Add XML declaration for better compatibility
+  const xmlDeclaration = '<?xml version="1.0" encoding="UTF-8"?>';
+  const fullSource = xmlDeclaration + source;
+
+  const blob = new Blob([fullSource], {
+    type: "image/svg+xml;charset=utf-8",
+  });
+
+  const urlBlob = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = urlBlob;
+  a.download = `qr-${typeId}${isHD ? "-HD" : ""}.svg`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(urlBlob);
+};
+
+export const checkGooglePlaceIdAndAlert = (
+  typeId: string,
+  googlePlaceId?: string
+): boolean => {
+  if (typeId === "review" && !googlePlaceId) {
+    toast.error(
+      "Aucun Google Place ID n'est configuré pour ce restaurant. Vous devez d'abord ajouter votre restaurant dans la section 'Avis Google'."
+    );
+    return false;
+  }
+  return true;
 };
 
 export const getCharacterCountColor = (
