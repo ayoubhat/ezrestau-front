@@ -56,9 +56,9 @@ const qrCodeTypes: QRCodeType[] = [
   {
     id: "review",
     title: "Laisser un Avis",
-    description: "Redirection vers Google pour laisser un avis",
+    description: "Accès rapide pour laisser un avis",
     icon: <ThumbsUp className="w-6 h-6" />,
-    urlPath: "", // Will be constructed differently
+    urlPath: "",
     isExternalUrl: true,
   },
 ];
